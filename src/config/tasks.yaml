@@ -1,0 +1,36 @@
+search_task:
+  description: >
+    Search for new solar energy projects in Romania from the last 6 months.
+    Focus on project sizes, locations, developers, and investment values.
+    Use SerperDev to find relevant news articles and project announcements.
+  expected_output: >
+    A list of URLs and brief descriptions of relevant Romanian solar project announcements
+  agent: web_researcher
+
+scraping_task:
+  description: >
+    Scrape detailed information from the provided URLs about Romanian solar projects.
+    Extract project details including:
+    - Project name and location
+    - Capacity (MW)
+    - Developer/Company
+    - Investment value
+    - Timeline
+    - Current status
+  expected_output: >
+    Structured data from each website in JSON format containing all available project details
+  agent: web_scraper
+
+analysis_task:
+  description: >
+    Analyze the scraped data about Romanian solar projects and create a comprehensive summary.
+    Include:
+    - Total MW of new projects
+    - Total investment value
+    - Key trends in project locations
+    - Major developers active in the market
+    - Project development timelines
+    Format the output as a structured JSON with a summary section and detailed project list.
+  expected_output: >
+    A JSON document containing both analysis summary and detailed project data
+  agent: data_analyst
