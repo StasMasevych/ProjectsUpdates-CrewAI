@@ -1,15 +1,15 @@
 search_task:
   description: >
-    Search for new solar energy projects in Romania from the last 6 months.
+    Search for new {technology} energy projects in {country} from the last 6 months.
     Focus on project sizes, locations, developers, and investment values.
     Use SerperDev to find relevant news articles and project announcements.
   expected_output: >
-    A list of URLs and brief descriptions of relevant Romanian solar project announcements
+    A list of URLs and brief descriptions of relevant {country} {technology} project announcements
   agent: web_researcher
 
 scraping_task:
   description: >
-    Scrape detailed information from the provided URLs about Romanian solar projects.
+    Scrape detailed information from the provided URLs about {country} {technology} projects.
     Extract project details including:
     - Project name and location
     - Capacity (MW)
@@ -23,7 +23,7 @@ scraping_task:
 
 analysis_task:
   description: >
-    Analyze the scraped data about Romanian solar projects and create a comprehensive summary.
+    Analyze the scraped data about {country} {technology} projects and create a comprehensive summary.
     Include:
     - Total MW of new projects
     - Total investment value

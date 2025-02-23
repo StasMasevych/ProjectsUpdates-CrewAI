@@ -1,0 +1,12 @@
+{
+  "timestamp": "2025-02-23 20:20:53.779298",
+  "raw_result": {
+    "projects": [],
+    "search_results": [],
+    "token_usage": {
+      "total_tokens": 0,
+      "prompt_tokens": 0,
+      "completion_tokens": 0
+    }
+  }
+}
