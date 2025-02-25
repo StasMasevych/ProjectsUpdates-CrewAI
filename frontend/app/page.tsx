@@ -13,28 +13,35 @@ interface Project {
   developer: string;
   source_url: string;
   source_name: string;
-  summary: string;
-  date: string;
+  status: string;
+}
+
+interface AnalysisSummary {
+  total_mw: number;
+  total_investment: number;
+  countries_analyzed: string[];
+  major_developers: string[];
+  project_locations: string[];
+}
+
+interface AccumulatedAnalysis {
+  timestamp: string;
+  summary: AnalysisSummary;
+  projects_by_country: {
+    [country: string]: Project[];
+  };
 }
 
 interface SearchResult {
   url: string;
-  status: string;
-  projects_found: number;
+  description: string;
+  country: string;
 }
 
 interface ApiResponse {
-  timestamp: string;
+  search_results: SearchResult[];
+  analysis: AccumulatedAnalysis;
   error?: string;
-  raw_result: {
-    search_results: SearchResult[];
-    projects: Project[];
-    token_usage: {
-      total_tokens: number;
-      prompt_tokens: number;
-      completion_tokens: number;
-    };
-  };
 }
 
 type ProgressUpdate = {
@@ -223,61 +230,191 @@ export default function Home() {
           <section className="bg-white p-6 rounded-lg shadow">
             <h2 className="text-2xl font-semibold mb-4">Analysis Results</h2>
 
-            {/* Summary Stats */}
-            <div className="grid grid-cols-2 gap-4 mb-6 p-4 bg-gray-50 rounded-lg">
-              <div>
-                <p className="font-medium">Total Projects:</p>
-                <p className="text-xl">{result.raw_result.projects.length}</p>
+            {/* Overall Summary */}
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold mb-4">Overall Summary</h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 p-4 bg-gray-50 rounded-lg">
+                <div>
+                  <p className="font-medium">Total MW:</p>
+                  <p className="text-xl">
+                    {result.analysis.summary.total_mw.toFixed(1)} MW
+                  </p>
+                </div>
+                <div>
+                  <p className="font-medium">Total Investment:</p>
+                  <p className="text-xl">
+                    €{result.analysis.summary.total_investment}M
+                  </p>
+                </div>
+                <div>
+                  <p className="font-medium">Countries Analyzed:</p>
+                  <p className="text-xl">
+                    {result.analysis.summary.countries_analyzed.length}
+                  </p>
+                </div>
               </div>
-              <div>
-                <p className="font-medium">Total Search Results:</p>
-                <p className="text-xl">
-                  {result.raw_result.search_results.length}
-                </p>
+
+              {/* Major Developers */}
+              <div className="mt-4">
+                <h4 className="font-medium mb-2">Major Developers:</h4>
+                <div className="flex flex-wrap gap-2">
+                  {result.analysis.summary.major_developers.map(
+                    (developer, index) => (
+                      <span
+                        key={index}
+                        className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm"
+                      >
+                        {developer}
+                      </span>
+                    )
+                  )}
+                </div>
               </div>
             </div>
 
-            {/* Projects List */}
-            <div className="grid gap-6">
-              {result.raw_result.projects.map((project, index) => (
-                <div
-                  key={index}
-                  className="border p-4 rounded-lg hover:bg-gray-50"
-                >
-                  <h3 className="text-xl font-semibold mb-2">{project.name}</h3>
-                  <div className="grid grid-cols-2 gap-4">
-                    <p>
-                      <span className="font-medium">🌍 Location:</span>{" "}
-                      {project.location}
-                    </p>
-                    <p>
-                      <span className="font-medium">⚡ Capacity:</span>{" "}
-                      {project.capacity}
-                    </p>
-                    <p>
-                      <span className="font-medium">👥 Developer:</span>{" "}
-                      {project.developer}
-                    </p>
-                    <p>
-                      <span className="font-medium">📅 Timeline:</span>{" "}
-                      {project.timeline}
-                    </p>
-                    <p>
-                      <span className="font-medium">�� Investment:</span>{" "}
-                      {project.investment}
-                    </p>
-                    <p>
-                      <span className="font-medium">🔗 Source:</span>{" "}
-                      <a
-                        href={project.source_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-500 hover:underline"
-                      >
-                        {project.source_name}
-                      </a>
-                    </p>
+            {/* Projects by Country */}
+            <div className="space-y-6">
+              <h3 className="text-xl font-semibold">Projects by Country</h3>
+              {Object.entries(result.analysis.projects_by_country).map(
+                ([country, projects]) => (
+                  <div key={country} className="border-t pt-4">
+                    <h4 className="text-lg font-medium mb-3">
+                      {country} ({projects.length} projects)
+                    </h4>
+                    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                      {projects.map((project, index) => (
+                        <div
+                          key={index}
+                          className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden"
+                        >
+                          {/* Project Header */}
+                          <div className="p-4 border-b bg-gradient-to-r from-blue-50 to-blue-100">
+                            <h5 className="text-lg font-semibold text-gray-900 mb-1">
+                              {project.name}
+                            </h5>
+                            <div className="flex items-center text-sm text-gray-600">
+                              <span className="mr-2">📍</span>
+                              {project.location}
+                            </div>
+                          </div>
+
+                          {/* Project Details */}
+                          <div className="p-4 space-y-3">
+                            <div className="grid grid-cols-2 gap-3 text-sm">
+                              <div className="flex items-center">
+                                <span className="text-lg mr-2">⚡</span>
+                                <div>
+                                  <p className="text-gray-600">Capacity</p>
+                                  <p className="font-medium">
+                                    {project.capacity}
+                                  </p>
+                                </div>
+                              </div>
+                              <div className="flex items-center">
+                                <span className="text-lg mr-2">💰</span>
+                                <div>
+                                  <p className="text-gray-600">Investment</p>
+                                  <p className="font-medium">
+                                    {project.investment}
+                                  </p>
+                                </div>
+                              </div>
+                              <div className="flex items-center">
+                                <span className="text-lg mr-2">👥</span>
+                                <div>
+                                  <p className="text-gray-600">Developer</p>
+                                  <p className="font-medium">
+                                    {project.developer}
+                                  </p>
+                                </div>
+                              </div>
+                              <div className="flex items-center">
+                                <span className="text-lg mr-2">📅</span>
+                                <div>
+                                  <p className="text-gray-600">Timeline</p>
+                                  <p className="font-medium">
+                                    {project.timeline}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Status Badge */}
+                            <div className="pt-2">
+                              <span
+                                className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+                              ${
+                                project.status === "Completed"
+                                  ? "bg-green-100 text-green-800"
+                                  : project.status === "Under Construction"
+                                  ? "bg-yellow-100 text-yellow-800"
+                                  : "bg-blue-100 text-blue-800"
+                              }`}
+                              >
+                                {project.status}
+                              </span>
+                            </div>
+
+                            {/* Source Information */}
+                            <div className="mt-4 pt-3 border-t border-gray-100">
+                              <div className="text-sm text-gray-600">
+                                <p className="flex items-center mb-1">
+                                  <span className="text-lg mr-2">📰</span>
+                                  Source: {project.source_name}
+                                </p>
+                                <a
+                                  href={project.source_url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-blue-600 hover:text-blue-800 hover:underline flex items-center"
+                                >
+                                  <span className="text-lg mr-2">🔗</span>
+                                  Read More
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
+                )
+              )}
+            </div>
+
+            {/* Search Results Summary */}
+            <div className="mt-8 pt-6 border-t">
+              <h3 className="text-xl font-semibold mb-4">
+                Search Results by Country
+              </h3>
+              {Object.entries(
+                result.search_results.reduce(
+                  (acc: Record<string, SearchResult[]>, curr) => {
+                    if (!acc[curr.country]) {
+                      acc[curr.country] = [];
+                    }
+                    acc[curr.country].push(curr);
+                    return acc;
+                  },
+                  {}
+                )
+              ).map(([country, results]) => (
+                <div key={country} className="mb-4">
+                  <h4 className="font-medium mb-2">{country}</h4>
+                  <ul className="list-disc pl-5 space-y-2">
+                    {results.map((result: SearchResult, index: number) => (
+                      <li key={index}>
+                        <a
+                          href={result.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:underline"
+                        >
+                          {result.description}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>

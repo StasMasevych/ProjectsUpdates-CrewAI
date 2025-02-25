@@ -1,23 +1,33 @@
 [
     {
-        "URL": "https://www.pv-tech.org/renalfa-acquires-258mw-romanian-solar-project/",
-        "description": "Renalfa has acquired a 258MW solar project in Teleorman, Romania, which it expects to start commercial operation in 2027."
+        "title": "Solar to reach up to 70% of Bulgaria's generation at times this spring",
+        "url": "https://renewablesnow.com/news/solar-to-reach-up-to-70-percent-of-bulgarias-generation-at-times-this-spring-1270937/",
+        "description": "Solar energy could reach 60-70% of Bulgaria's total electricity generation during some parts of the day as early as this spring."
     },
     {
-        "URL": "https://energynews.pro/en/a-strategic-15-year-contract-for-a-solar-project-in-romania/",
-        "description": "Romania awards a 15-year CfD contract for a 190 MW solar project, supported by the European Modernisation Fund."
+        "title": "Bulgaria's 3 GWh standalone energy storage tender heavily oversubscribed",
+        "url": "https://www.ess-news.com/2024/12/09/bulgarias-3-gwh-standalone-battery-storage-tender-heavily-oversubscribed/",
+        "description": "The Ministry of Energy of Bulgaria has received 151 project proposals worth nearly BGN 5 billion ($2.7 billion), more than four times the available funding."
     },
     {
-        "URL": "https://renewablesnow.com/news/premier-energy-buys-shovel-ready-pv-storage-project-in-romania-1268978/",
-        "description": "Romanian power distributor Premier Energy PLC has wrapped up the acquisition of a majority stake in a company that holds the rights to a 49-MWdc solar project."
+        "title": "Funding secured for 237.6 MW merchant solar plant in Bulgaria",
+        "url": "https://www.pv-magazine.com/2024/11/22/funding-secured-for-237-6-mw-merchant-solar-plant-in-bulgaria/",
+        "description": "According to figures from the International Renewable Energy Agency (IRENA), Bulgaria had deployed 2,937 MW of solar by the end of 2023."
     },
     {
-        "URL": "https://www.green-forum.eu/industry/20240806/ebrd-provides-eur122-million-for-two-solar-power-plants-in-romania-1315",
-        "description": "EBRD provides €12.2 million for two solar power plants in Romania."
+        "title": "Verila Project, Bulgaria's Largest Solar Power Plant",
+        "url": "https://energyindustryreview.com/renewables/verila-project-bulgarias-largest-solar-power-plant/",
+        "description": "The Verila project, which is being built in hilly terrain south of Sofia, will increase solar power generation in the country by 12 percent."
     },
     {
-        "URL": "https://www.green-forum.eu/energy/20240304/eurowind-energy-to-complete-eur47-million-pv-park-by-mid-year-in-romania-926",
-        "description": "Eurowind Energy is set to complete a €47 million PV park in Romania by mid-year."
+        "title": "IFC Supports Major Solar Power Project to Drive Bulgaria's Renewable Energy Goals",
+        "url": "https://www.ifc.org/en/pressroom/2024/ifc-supports-major-solar-power-project-to-drive-bulgaria-s-renewable-energy-goals",
+        "description": "IFC is financing Rezolv Energy's solar PV plant in Silistra, Bulgaria. The project will significantly contribute to Bulgaria's 2050 net-zero goals."
+    },
+    {
+        "title": "Bulgaria launches tenders to add 1.43GW of renewables to grid",
+        "url": "https://www.pv-tech.org/bulgaria-adds-renewables-to-grid/",
+        "description": "Bulgaria's Ministry of Energy has launched two tenders to add 1,425MW of renewable power generation to the grid and 350MW of battery energy storage."
     }
 ]
 ```

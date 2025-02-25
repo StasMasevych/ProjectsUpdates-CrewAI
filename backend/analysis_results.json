@@ -1,69 +1,68 @@
+```json
 {
-    "Summary": {
-        "Total MW of new projects": 617.2,
-        "Total investment value": "€199.2 million",
-        "Key trends in project locations": ["Projects located in various counties across Romania including Teleorman, Dolj, Olt, and Alba County"],
-        "Major developers active in the market": ["Renalfa", "Premier Energy PLC", "Danube Solar Five (INVL Renewable Energy Fund I)", "Teiuș.Solar (Eurowind Energy)"],
-        "Project development timelines": ["Projects have varying timelines with some expected to start commercial operation in 2027, others under construction with completion dates in 2024."]
+  "Summary": {
+    "Total MW of new projects": 2009.6,
+    "Total investment value": "$1.65 billion",
+    "Key trends in project locations": ["Sofia", "Silistra", "Southeastern Bulgaria"],
+    "Major developers active in the market": ["SUNOTEC", "Tenevo Solar Technologies EAD", "Rezolv Energy"],
+    "Project development timelines": ["Under construction", "Financing secured", "Tender launched", "Heavily oversubscribed tender"]
+  },
+  "Detailed Project List": [
+    {
+      "ProjectName": "Verila Project",
+      "Location": "South of Sofia, Bulgaria",
+      "Capacity_MW": 124,
+      "Developer": "SUNOTEC",
+      "InvestmentValue": "Not specified",
+      "Timeline": "September 2022 - Spring 2023",
+      "CurrentStatus": "Under construction",
+      "source_url": "https://energyindustryreview.com/renewables/verila-project-bulgarias-largest-solar-power-plant/",
+      "source_name": "Energy Industry Review"
     },
-    "Detailed Project List": [
-        {
-            "Project Name": "258 MW Solar Project",
-            "Location": "Teleorman, Romania",
-            "Capacity (MW)": 258,
-            "Developer/Company": "Renalfa",
-            "Investment Value": "Not Specified",
-            "Timeline": {
-                "Start of Commercial Operation": 2027
-            },
-            "Current Status": "Acquired"
-        },
-        {
-            "Project Name": "190 MW Solar Project",
-            "Location": "Dolj and Olt Counties, Romania",
-            "Capacity (MW)": 190,
-            "Developer/Company": "Consortium (Not specified)",
-            "Investment Value": "€140 million",
-            "Timeline": {
-                "Contract Duration": "15 years"
-            },
-            "Current Status": "Contract Awarded"
-        },
-        {
-            "Project Name": "49 MWdc Solar Project",
-            "Location": "Romania",
-            "Capacity (MW)": 49,
-            "Developer/Company": "Premier Energy PLC",
-            "Investment Value": "Not Specified",
-            "Timeline": {
-                "Start of Construction": "Not specified",
-                "Expected Completion": "Not specified"
-            },
-            "Current Status": "Acquisition Completed"
-        },
-        {
-            "Project Name": "Two Solar Power Plants",
-            "Location": "Dolj County, Romania",
-            "Capacity (MW)": 60,
-            "Developer/Company": "Danube Solar Five (INVL Renewable Energy Fund I)",
-            "Investment Value": "€12.2 million (part of €24.4 million)",
-            "Timeline": {
-                "Construction Start": "Not specified",
-                "Completion": "Not specified"
-            },
-            "Current Status": "Financing Secured"
-        },
-        {
-            "Project Name": "Teiuș Photovoltaic Park",
-            "Location": "Teiuș, Alba County, Romania",
-            "Capacity (MW)": 60.2,
-            "Developer/Company": "Teiuș.Solar (Eurowind Energy)",
-            "Investment Value": "€47 million",
-            "Timeline": {
-                "Start": "July 1, 2022",
-                "Completion": "June 30, 2024"
-            },
-            "Current Status": "Under Construction"
-        }
-    ]
+    {
+      "ProjectName": "237.6 MW Merchant Solar Plant",
+      "Location": "Southeastern Bulgaria",
+      "Capacity_MW": 237.6,
+      "Developer": "Tenevo Solar Technologies EAD (joint venture of Renalfa IPP and Eurowind Energy)",
+      "InvestmentValue": "€103 million ($107.2 million)",
+      "Timeline": "Not specified",
+      "CurrentStatus": "Financing secured",
+      "source_url": "https://www.pv-magazine.com/2024/11/22/funding-secured-for-237-6-mw-merchant-solar-plant-in-bulgaria/",
+      "source_name": "PV Magazine"
+    },
+    {
+      "ProjectName": "225 MW Solar PV Plant",
+      "Location": "Near Silistra, Bulgaria",
+      "Capacity_MW": 225,
+      "Developer": "Rezolv Energy",
+      "InvestmentValue": "€90 million (part of a debt package)",
+      "Timeline": "Not specified",
+      "CurrentStatus": "Financing secured",
+      "source_url": "https://www.ifc.org/en/pressroom/2024/ifc-supports-major-solar-power-project-to-drive-bulgaria-s-renewable-energy-goals",
+      "source_name": "IFC"
+    },
+    {
+      "ProjectName": "1.425 GW Renewables Tenders",
+      "Location": "Bulgaria",
+      "Capacity_MW": 1425,
+      "Developer": "Various (tender based)",
+      "InvestmentValue": "BGN 535.1 million ($298.2 million)",
+      "Timeline": "2024 - Proposals due by 12 June 2024",
+      "CurrentStatus": "Tender launched",
+      "source_url": "https://www.pv-tech.org/bulgaria-adds-renewables-to-grid/",
+      "source_name": "PV Tech"
+    },
+    {
+      "ProjectName": "3 GWh Standalone Energy Storage",
+      "Location": "Bulgaria",
+      "Capacity_MW": 3000,
+      "Developer": "Various (tender based)",
+      "InvestmentValue": "BGN 1.154 billion (total proposals)",
+      "Timeline": "Not specified - By March 2026",
+      "CurrentStatus": "Heavily oversubscribed tender",
+      "source_url": "https://www.ess-news.com/2024/12/09/bulgarias-3-gwh-standalone-battery-storage-tender-heavily-oversubscribed/",
+      "source_name": "ESS News"
+    }
+  ]
 }
+```

@@ -1,14 +1,14 @@
 search_task:
-  description: >
+  description: >-
     Search for new {technology} energy projects in {country} from the last 6 months.
     Focus on project sizes, locations, developers, and investment values.
     Use SerperDev to find relevant news articles and project announcements.
-  expected_output: >
+  expected_output: >-
     A list of URLs and brief descriptions of relevant {country} {technology} project announcements
   agent: web_researcher
 
 scraping_task:
-  description: >
+  description: >-
     Scrape detailed information from the provided URLs about {country} {technology} projects.
     Extract project details including:
     - Project name and location
@@ -17,20 +17,37 @@ scraping_task:
     - Investment value
     - Timeline
     - Current status
-  expected_output: >
+  expected_output: >-
     Structured data from each website in JSON format containing all available project details
   agent: web_scraper
 
 analysis_task:
-  description: >
-    Analyze the scraped data about {country} {technology} projects and create a comprehensive summary.
-    Include:
-    - Total MW of new projects
-    - Total investment value
-    - Key trends in project locations
-    - Major developers active in the market
-    - Project development timelines
-    Format the output as a structured JSON with a summary section and detailed project list.
-  expected_output: >
-    A JSON document containing both analysis summary and detailed project data
+  description: |
+    Analyze the scraped data about {country} {technology} projects and create a standardized JSON summary.
+    The output must follow this exact structure:
+    {{
+      "Summary": {{
+        "Total MW of new projects": <number>,
+        "Total investment value": "<string>",
+        "Key trends in project locations": ["<string>"],
+        "Major developers active in the market": ["<string>"],
+        "Project development timelines": ["<string>"]
+      }},
+      "Detailed Project List": [
+        {{
+          "ProjectName": "<string>",
+          "Location": "<string>",
+          "Capacity_MW": <number>,
+          "Developer": "<string>",
+          "InvestmentValue": "<string>",
+          "Timeline": "<string>",
+          "CurrentStatus": "<string>",
+          "source_url": "<string>",
+          "source_name": "<string>"
+        }}
+      ]
+    }}
+    Ensure all numeric values are properly formatted and all fields are present.
+  expected_output: >-
+    A JSON document with standardized Summary and Detailed Project List sections
   agent: data_analyst

@@ -17,6 +17,7 @@ import json
 from pathlib import Path
 from sse_starlette.sse import EventSourceResponse
 import asyncio
+from .accumulator import ResultsAccumulator
 
 app = FastAPI()
 
@@ -35,86 +36,223 @@ app.add_middleware(
 async def send_progress_update(country: str, step: str):
     progress_updates.append({"country": country, "step": step})
 
+async def process_region(region: str, technology: str) -> Dict:
+    """Process all countries in a region"""
+    countries = get_countries_for_region(region)
+    accumulator = ResultsAccumulator()
+    
+    for country in countries:
+        await send_progress_update(country, "starting")
+        try:
+            # Process single country
+            result = await process_country(country, technology)
+            
+            # Add results to accumulator
+            accumulator.add_country_results(
+                country=country,
+                search_results=result.get("search_results", []),
+                analysis_results=result.get("analysis", {})
+            )
+            
+            await send_progress_update(country, "complete")
+        except Exception as e:
+            await send_progress_update(country, "error")
+            print(f"Error processing {country}: {str(e)}")
+            continue
+
+    # Save final accumulated results
+    accumulator.save_results()
+    
+    # Return the properly structured response
+    final_results = accumulator.get_results()
+    return {
+        "timestamp": datetime.now().isoformat(),
+        "search_results": final_results["search_results"],
+        "analysis": {
+            "timestamp": datetime.now().isoformat(),
+            "summary": {
+                "total_mw": final_results["analysis"]["summary"]["total_mw"],
+                "total_investment": final_results["analysis"]["summary"]["total_investment"],
+                "countries_analyzed": final_results["analysis"]["summary"]["countries_analyzed"],
+                "major_developers": list(final_results["analysis"]["summary"]["major_developers"]),
+                "project_locations": final_results["analysis"]["summary"]["project_locations"]
+            },
+            "projects_by_country": final_results["analysis"]["projects_by_country"]
+        }
+    }
+
 async def process_country(country: str, technology: str) -> Dict:
     """Process a single country's data"""
-    await send_progress_update(country, "searching")
-    energy_crew = EnergyProjectsCrew(country=country, technology=technology)
-    crew = energy_crew.create_crew()
-    
-    await send_progress_update(country, "processing")
-    result = crew.kickoff()
-    
-    await send_progress_update(country, "analyzing")
-    # Convert CrewOutput to string if it's not already
-    if hasattr(result, '__str__'):
-        result = str(result)
-    
-    # Parse and standardize the result
-    parsed_result = json.loads(result)
-    return standardize_country_result(parsed_result, country)
+    try:
+        print(f"\n📍 Starting process for {country}")
+        await send_progress_update(country, "searching")
+        
+        print(f"🔧 Creating crew for {country}")
+        energy_crew = EnergyProjectsCrew(country=country, technology=technology)
+        crew = energy_crew.create_crew()
+        
+        print(f"🚀 Executing crew for {country}")
+        await send_progress_update(country, "processing")
+        result = crew.kickoff()
+        
+        print("\n🔍 Raw Result Type:", type(result))
+        print("🔍 Raw Result Content:")
+        print("---START OF RAW RESULT---")
+        print(result)
+        print("---END OF RAW RESULT---")
+        
+        await send_progress_update(country, "analyzing")
+        
+        # Convert CrewOutput to string and parse
+        try:
+            # Get the string representation of CrewOutput
+            result_str = str(result)
+            print("\n📝 Converting CrewOutput to string:")
+            print(result_str)
+            
+            # Find the JSON content within the string
+            json_start = result_str.find('{')
+            json_end = result_str.rfind('}') + 1
+            if json_start >= 0 and json_end > json_start:
+                json_content = result_str[json_start:json_end]
+                print("\n🔍 Extracted JSON content:")
+                print(json_content)
+                
+                # Parse the JSON content
+                parsed_result = json.loads(json_content)
+                print("\n✅ Successfully parsed JSON:")
+                print(json.dumps(parsed_result, indent=2))
+            else:
+                print("\n❌ Could not find JSON content in result")
+                return create_empty_result()
+                
+        except json.JSONDecodeError as e:
+            print(f"\n❌ JSON parsing error for {country}")
+            print(f"Error details: {str(e)}")
+            return create_empty_result()
+        except Exception as e:
+            print(f"\n❌ Error processing result for {country}: {str(e)}")
+            return create_empty_result()
+        
+        print("\n🔄 Standardizing result structure")
+        standardized_result = standardize_country_result(parsed_result, country)
+        
+        print("\n📊 Final standardized result structure:")
+        print(json.dumps(standardized_result, indent=2))
+        
+        return standardized_result
+
+    except Exception as e:
+        print(f"\n❌ Error in process_country for {country}")
+        print(f"Error type: {type(e).__name__}")
+        print(f"Error message: {str(e)}")
+        print("Full traceback:")
+        import traceback
+        traceback.print_exc()
+        return create_empty_result()
+
+def create_empty_result() -> Dict:
+    """Create an empty result structure"""
+    return {
+        "search_results": [],
+        "analysis": {
+            "Summary": {
+                "Total MW of new projects": 0,
+                "Total investment value": "0",
+                "Key trends in project locations": [],
+                "Major developers active in the market": [],
+                "Project development timelines": []
+            },
+            "Detailed Project List": []
+        }
+    }
 
 def standardize_country_result(result: any, country: str) -> Dict:
     """Standardize the country result into a consistent format"""
-    standardized_projects = []
-    
-    if isinstance(result, list):
-        # Handle Bulgaria-style format
-        summary = None
-        for item in result:
-            if isinstance(item, dict):
-                if 'summary' in item:
-                    summary = item['summary']
-                elif 'ProjectName' in item or 'name' in item:
-                    project = {
-                        "name": item.get("ProjectName") or item.get("name", "Unknown"),
-                        "location": item.get("Location") or item.get("location", country),
-                        "capacity": str(item.get("Capacity_MW") or item.get("capacity", "N/A")),
-                        "developer": item.get("Developer") or item.get("developer", "Unknown"),
-                        "investment": item.get("InvestmentValue") or item.get("investment", "N/A"),
-                        "timeline": item.get("Timeline") or item.get("timeline", "N/A"),
-                        "status": item.get("CurrentStatus") or item.get("status", "N/A"),
-                        "source_url": item.get("source_url", ""),
-                        "source_name": item.get("source_name", country)
-                    }
-                    standardized_projects.append(project)
-    elif isinstance(result, dict):
-        # Handle Romania-style format
-        projects = (result.get('raw_result', {}).get('projects', []) or 
-                   result.get('projects', []))
+    try:
+        print(f"\n🔍 Standardizing result for {country}")
+        print(f"Input result type: {type(result)}")
+        print("Input result structure:")
+        print(json.dumps(result, indent=2))
         
-        for item in projects:
-            project = {
-                "name": item.get("name", "Unknown"),
-                "location": item.get("location", country),
-                "capacity": str(item.get("capacity", "N/A")),
-                "developer": item.get("developer", "Unknown"),
-                "investment": item.get("investment", "N/A"),
-                "timeline": item.get("timeline", "N/A"),
-                "status": item.get("status", "N/A"),
-                "source_url": item.get("source_url", ""),
-                "source_name": item.get("source_name", country)
+        standardized_projects = []
+        
+        # Handle different result structures
+        projects = []
+        print("\n📦 Extracting projects from result")
+        
+        if isinstance(result, list):
+            print("Result is a list, filtering for project entries")
+            projects = [p for p in result if isinstance(p, dict) and ('ProjectName' in p or 'name' in p)]
+            print(f"Found {len(projects)} projects in list")
+            
+        elif isinstance(result, dict):
+            print("Result is a dictionary, checking known structures")
+            if 'Detailed Project List' in result:
+                print("Found 'Detailed Project List' structure")
+                projects = result.get('Detailed Project List', [])
+            elif 'raw_result' in result and 'projects' in result['raw_result']:
+                print("Found 'raw_result.projects' structure")
+                projects = result['raw_result']['projects']
+            elif 'projects' in result:
+                print("Found direct 'projects' structure")
+                projects = result['projects']
+            
+            print(f"Extracted {len(projects)} projects from dictionary")
+        
+        print("\n📋 Extracted projects:")
+        print(json.dumps(projects, indent=2))
+        
+        # Standardize each project
+        print("\n🔄 Standardizing individual projects")
+        for project in projects:
+            print(f"\nProcessing project: {project.get('ProjectName') or project.get('name', 'Unknown')}")
+            standardized_project = {
+                "name": project.get("ProjectName") or project.get("name", "Unknown"),
+                "location": project.get("Location") or project.get("location", country),
+                "capacity": str(project.get("Capacity_MW") or project.get("capacity", "N/A")),
+                "developer": project.get("Developer") or project.get("developer", "Unknown"),
+                "investment": project.get("InvestmentValue") or project.get("investment", "N/A"),
+                "timeline": project.get("Timeline") or project.get("timeline", "N/A"),
+                "status": project.get("CurrentStatus") or project.get("status", "N/A"),
+                "source_url": project.get("source_url", ""),
+                "source_name": project.get("source_name", country)
             }
-            standardized_projects.append(project)
+            standardized_projects.append(standardized_project)
+            print("Standardized project:", json.dumps(standardized_project, indent=2))
 
-    # Create standardized result structure
-    standardized_result = {
-        "timestamp": str(datetime.now()),
-        "raw_result": {
-            "projects": standardized_projects,
-            "search_results": [],  # We can add this if needed
-            "token_usage": {
-                "total_tokens": 0,
-                "prompt_tokens": 0,
-                "completion_tokens": 0
+        print(f"\n✅ Successfully standardized {len(standardized_projects)} projects")
+        
+        # Create final result structure
+        standardized_result = {
+            "timestamp": str(datetime.now()),
+            "search_results": [],  # Will be populated by the accumulator
+            "analysis": {
+                "Summary": {
+                    "Total MW of new projects": sum(float(p["capacity"].split()[0]) 
+                                                  for p in standardized_projects 
+                                                  if p["capacity"] != "N/A" and p["capacity"].split()[0].replace('.','',1).isdigit()),
+                    "Total investment value": "0",  # Will be calculated in accumulator
+                    "Key trends in project locations": list(set(p["location"] for p in standardized_projects)),
+                    "Major developers active in the market": list(set(p["developer"] for p in standardized_projects if p["developer"] != "Unknown")),
+                    "Project development timelines": list(set(p["timeline"] for p in standardized_projects if p["timeline"] != "N/A"))
+                },
+                "Detailed Project List": standardized_projects
             }
         }
-    }
-    
-    print(f"\n📋 Standardized result for {country}:")
-    for project in standardized_projects:
-        print(f"  - {project['name']}: {project['capacity']} ({project['location']})")
-    
-    return standardized_result
+        
+        print("\n📊 Final result structure:")
+        print(json.dumps(standardized_result, indent=2))
+        return standardized_result
+
+    except Exception as e:
+        print(f"\n❌ Error in standardize_country_result for {country}")
+        print(f"Error type: {type(e).__name__}")
+        print(f"Error message: {str(e)}")
+        print("Full traceback:")
+        import traceback
+        traceback.print_exc()
+        return create_empty_result()
 
 def normalize_project(project: Dict, country: str) -> Dict:
     """Normalize project data to a consistent format"""
@@ -168,103 +306,30 @@ async def get_projects(region: str, technology: str):
         if not os.getenv('OPENAI_API_KEY'):
             raise HTTPException(status_code=500, detail="OPENAI_API_KEY not found")
         
-        countries = get_countries_for_region(region)
-        print(f"\n🌍 Processing region {region} with countries: {countries}")
+        print(f"\n🌍 Processing region {region}")
         
-        if not countries:
+        if not get_countries_for_region(region):
             raise HTTPException(status_code=400, detail=f"Invalid region: {region}")
 
-        all_results = []
+        # Process the region and get results
+        result = await process_region(region, technology)
         
-        # Process each country
-        for country in countries:
-            print(f"\n🚀 Starting processing for {country}...")
-            await send_progress_update(country, "starting")
-            try:
-                # Get raw result from crew
-                energy_crew = EnergyProjectsCrew(country=country, technology=technology)
-                crew = energy_crew.create_crew()
-                
-                await send_progress_update(country, "processing")
-                result = crew.kickoff()
-                
-                # Convert to string if needed and parse
-                if hasattr(result, '__str__'):
-                    result = str(result)
-                country_result = json.loads(result)
-                
-                # Add to results
-                if isinstance(country_result, list):
-                    # Skip the summary object if present
-                    projects = [p for p in country_result if 'ProjectName' in p]
-                    all_results.extend(projects)
-                    print(f"Added {len(projects)} projects from {country}")
-                    print("Projects:", json.dumps(projects, indent=2))
-                
-                print(f"✅ Successfully processed {country}")
-                
-            except Exception as e:
-                print(f"❌ Error processing {country}: {str(e)}")
-                continue
-
-        await send_progress_update("all", "combining")
-        print("\n🔄 Combining results from all countries...")
-
-        # Create final combined result with standardized project structure
-        standardized_projects = []
-        for project in all_results:
-            standardized_project = {
-                "name": project.get("ProjectName", project.get("name", "Unknown")),
-                "location": project.get("Location", project.get("location", "Unknown")),
-                "capacity": str(project.get("Capacity_MW", project.get("capacity", "N/A"))),
-                "developer": project.get("Developer", project.get("developer", "Unknown")),
-                "investment": project.get("InvestmentValue", project.get("investment", "N/A")),
-                "timeline": project.get("Timeline", project.get("timeline", "N/A")),
-                "status": project.get("CurrentStatus", project.get("status", "N/A")),
-                "source_url": project.get("source_url", ""),
-                "source_name": project.get("source_name", "")
-            }
-            standardized_projects.append(standardized_project)
-
-        combined_result = {
-            "timestamp": str(datetime.now()),
-            "raw_result": {
-                "projects": standardized_projects,
-                "search_results": [],
-                "token_usage": {
-                    "total_tokens": 0,
-                    "prompt_tokens": 0,
-                    "completion_tokens": 0
-                }
-            }
-        }
-
-        print(f"\n📊 Final combined results:")
-        print(f"Total projects found: {len(standardized_projects)}")
-        print(f"Projects per country:")
-        for country in countries:
-            country_projects = [p for p in standardized_projects 
-                              if country.lower() in p['location'].lower()]
-            print(f"- {country}: {len(country_projects)} projects")
-            for project in country_projects:
-                print(f"  - {project['name']}: {project['capacity']}")
-
-        # Save combined results
+        # Save the results
         output_dir = Path(__file__).parent.parent / 'output'
         output_dir.mkdir(exist_ok=True)
         
         output_file = output_dir / 'analysis_results.json'
         with open(output_file, 'w', encoding='utf-8') as f:
-            json.dump(combined_result, f, ensure_ascii=False, indent=2)
+            json.dump(result, f, ensure_ascii=False, indent=2)
         
         print("\n💾 Results saved to:", output_file)
         await send_progress_update("all", "complete")
-        return combined_result
+        return result
 
     except Exception as e:
         print(f"\n❌ Error in get_projects: {str(e)}")
         await send_progress_update("all", "error")
-        return {"error": f"Server error: {str(e)}"}
+        return {"error": str(e)}
 
 @app.get("/api/health")
 async def health_check():
