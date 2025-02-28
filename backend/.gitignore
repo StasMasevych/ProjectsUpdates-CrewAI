@@ -35,4 +35,9 @@ ENV/
 *.swo
 
 # OS
-.DS_Store 
+.DS_Store
+
+# Prevent root JSON files (we only want them in output/)
+/*.json
+/search_results.json
+/analysis_results.json 

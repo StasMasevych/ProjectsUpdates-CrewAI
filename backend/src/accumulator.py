@@ -93,7 +93,12 @@ class ResultsAccumulator:
             results["analysis"]["summary"]["major_developers"]
         )
 
-        # Save to file
+        # Save accumulated analysis to file
         output_path = self.output_dir / 'accumulated_analysis.json'
         with open(output_path, 'w', encoding='utf-8') as f:
-            json.dump(results, f, ensure_ascii=False, indent=2) 
+            json.dump(results, f, ensure_ascii=False, indent=2)
+        
+        # Also save search results to output directory
+        search_output_path = self.output_dir / 'search_results.json'
+        with open(search_output_path, 'w', encoding='utf-8') as f:
+            json.dump(self.accumulated_search_results, f, ensure_ascii=False, indent=2) 

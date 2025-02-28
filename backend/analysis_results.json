@@ -1,67 +1,67 @@
 ```json
 {
   "Summary": {
-    "Total MW of new projects": 2009.6,
-    "Total investment value": "$1.65 billion",
-    "Key trends in project locations": ["Sofia", "Silistra", "Southeastern Bulgaria"],
-    "Major developers active in the market": ["SUNOTEC", "Tenevo Solar Technologies EAD", "Rezolv Energy"],
-    "Project development timelines": ["Under construction", "Financing secured", "Tender launched", "Heavily oversubscribed tender"]
+    "Total MW of new projects": 1260,
+    "Total investment value": "$143.5 million",
+    "Key trends in project locations": ["Ukraine", "Odesa Region"],
+    "Major developers active in the market": ["DTEK", "Fluence Energy", "GÜRİŞ", "SPP Development"],
+    "Project development timelines": ["By October 2025", "Ongoing", "2022-2024"]
   },
   "Detailed Project List": [
     {
-      "ProjectName": "Verila Project",
-      "Location": "South of Sofia, Bulgaria",
-      "Capacity_MW": 124,
-      "Developer": "SUNOTEC",
-      "InvestmentValue": "Not specified",
-      "Timeline": "September 2022 - Spring 2023",
-      "CurrentStatus": "Under construction",
-      "source_url": "https://energyindustryreview.com/renewables/verila-project-bulgarias-largest-solar-power-plant/",
-      "source_name": "Energy Industry Review"
+      "ProjectName": "DTEK and Fluence BESS",
+      "Location": "Ukraine",
+      "Capacity_MW": 200,
+      "Developer": "DTEK",
+      "InvestmentValue": "$143.5 million",
+      "Timeline": "By October 2025",
+      "CurrentStatus": "In development",
+      "source_url": "https://www.energy-storage.news/dtek-enlists-fluence-for-200mw-400mwh-of-grid-supporting-bess-in-ukraine/",
+      "source_name": "Energy Storage News"
     },
     {
-      "ProjectName": "237.6 MW Merchant Solar Plant",
-      "Location": "Southeastern Bulgaria",
-      "Capacity_MW": 237.6,
-      "Developer": "Tenevo Solar Technologies EAD (joint venture of Renalfa IPP and Eurowind Energy)",
-      "InvestmentValue": "€103 million ($107.2 million)",
-      "Timeline": "Not specified",
-      "CurrentStatus": "Financing secured",
-      "source_url": "https://www.pv-magazine.com/2024/11/22/funding-secured-for-237-6-mw-merchant-solar-plant-in-bulgaria/",
-      "source_name": "PV Magazine"
+      "ProjectName": "Fluence Energy Storage Across Ukraine",
+      "Location": "Six sites across Ukraine",
+      "Capacity_MW": 200,
+      "Developer": "Fluence Energy",
+      "InvestmentValue": "N/A",
+      "Timeline": "Operational by October 2025",
+      "CurrentStatus": "In development",
+      "source_url": "https://www.energytech.com/energy-storage/article/55260746/battery-maker-fluence-energy-contracted-to-deliver-200-mw-energy-storage-across-ukraine",
+      "source_name": "Energy Tech"
     },
     {
-      "ProjectName": "225 MW Solar PV Plant",
-      "Location": "Near Silistra, Bulgaria",
-      "Capacity_MW": 225,
-      "Developer": "Rezolv Energy",
-      "InvestmentValue": "€90 million (part of a debt package)",
-      "Timeline": "Not specified",
-      "CurrentStatus": "Financing secured",
-      "source_url": "https://www.ifc.org/en/pressroom/2024/ifc-supports-major-solar-power-project-to-drive-bulgaria-s-renewable-energy-goals",
-      "source_name": "IFC"
+      "ProjectName": "GÜRİŞ Solar and Battery Storage Projects",
+      "Location": "Odesa Region, Ukraine",
+      "Capacity_MW": "N/A",
+      "Developer": "GÜRİŞ",
+      "InvestmentValue": "N/A",
+      "Timeline": "Ongoing",
+      "CurrentStatus": "In development",
+      "source_url": "https://www.dentons.com/en/about-dentons/news-events-and-awards/news/2025/january/dentons-advised-guris-on-new-solar-and-battery-storage-projects-in-ukraine",
+      "source_name": "Dentons"
     },
     {
-      "ProjectName": "1.425 GW Renewables Tenders",
-      "Location": "Bulgaria",
-      "Capacity_MW": 1425,
-      "Developer": "Various (tender based)",
-      "InvestmentValue": "BGN 535.1 million ($298.2 million)",
-      "Timeline": "2024 - Proposals due by 12 June 2024",
-      "CurrentStatus": "Tender launched",
-      "source_url": "https://www.pv-tech.org/bulgaria-adds-renewables-to-grid/",
-      "source_name": "PV Tech"
+      "ProjectName": "SPP Development 200 MW BESS",
+      "Location": "Ukraine",
+      "Capacity_MW": 200,
+      "Developer": "SPP Development",
+      "InvestmentValue": "N/A",
+      "Timeline": "N/A",
+      "CurrentStatus": "Recently unveiled",
+      "source_url": "https://sppdevelopment.com.ua/new-200-mw-bess-project/",
+      "source_name": "SPP Development"
     },
     {
-      "ProjectName": "3 GWh Standalone Energy Storage",
-      "Location": "Bulgaria",
-      "Capacity_MW": 3000,
-      "Developer": "Various (tender based)",
-      "InvestmentValue": "BGN 1.154 billion (total proposals)",
-      "Timeline": "Not specified - By March 2026",
-      "CurrentStatus": "Heavily oversubscribed tender",
-      "source_url": "https://www.ess-news.com/2024/12/09/bulgarias-3-gwh-standalone-battery-storage-tender-heavily-oversubscribed/",
-      "source_name": "ESS News"
+      "ProjectName": "Renewable Energy Capacity Addition",
+      "Location": "Ukraine",
+      "Capacity_MW": 860,
+      "Developer": "Multiple developers",
+      "InvestmentValue": "N/A",
+      "Timeline": "2022-2024",
+      "CurrentStatus": "Completed",
+      "source_url": "https://www.linkedin.com/posts/battery-industry_ukraine-adds-over-860-mw-of-renewable-energy-activity-7274028771001663488-vDug",
+      "source_name": "LinkedIn"
     }
   ]
 }

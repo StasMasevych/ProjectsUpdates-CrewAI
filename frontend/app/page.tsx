@@ -57,6 +57,9 @@ const REGIONS = [
 const TECHNOLOGIES = [
   { id: "solar", name: "Solar", icon: "☀️" },
   { id: "wind", name: "Wind", icon: "🌪️" },
+  { id: "bess", name: "BESS", icon: "🔋" },
+  { id: "biogas", name: "Biogas", icon: "♻️" },
+  { id: "h2", name: "H2", icon: "💧" },
 ];
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";

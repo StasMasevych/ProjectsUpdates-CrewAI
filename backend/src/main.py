@@ -140,6 +140,14 @@ async def process_country(country: str, technology: str) -> Dict:
         print("\n📊 Final standardized result structure:")
         print(json.dumps(standardized_result, indent=2))
         
+        # When saving files, ensure we're using the output directory
+        output_dir = Path(__file__).parent.parent / 'output'
+        output_dir.mkdir(exist_ok=True)
+        
+        # Don't save individual country files here - let the accumulator handle it
+        # This prevents files from being created in the root directory
+        
+        # Return the standardized result without writing files
         return standardized_result
 
     except Exception as e:
@@ -314,15 +322,17 @@ async def get_projects(region: str, technology: str):
         # Process the region and get results
         result = await process_region(region, technology)
         
-        # Save the results
+        # No need to save results again as accumulator.save_results() already did this
         output_dir = Path(__file__).parent.parent / 'output'
-        output_dir.mkdir(exist_ok=True)
-        
         output_file = output_dir / 'analysis_results.json'
-        with open(output_file, 'w', encoding='utf-8') as f:
-            json.dump(result, f, ensure_ascii=False, indent=2)
+        
+        # Also save search results
+        search_output_file = output_dir / 'search_results.json'
+        with open(search_output_file, 'w', encoding='utf-8') as f:
+            json.dump(result.get("search_results", []), f, ensure_ascii=False, indent=2)
         
         print("\n💾 Results saved to:", output_file)
+        print("\n💾 Search results saved to:", search_output_file)
         await send_progress_update("all", "complete")
         return result
 
