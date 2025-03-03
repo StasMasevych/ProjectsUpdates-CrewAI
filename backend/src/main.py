@@ -1,8 +1,10 @@
 import warnings
 from pydantic import PydanticDeprecatedSince20
-from typing import List, Dict
+from typing import List, Dict, Optional
 import os
 from datetime import datetime
+import logging
+from config.logging_config import setup_logging
 
 # Suppress specific Pydantic warnings
 warnings.filterwarnings("ignore", category=PydanticDeprecatedSince20)
@@ -17,7 +19,7 @@ import json
 from pathlib import Path
 from sse_starlette.sse import EventSourceResponse
 import asyncio
-from .accumulator import ResultsAccumulator
+from accumulator import ResultsAccumulator
 
 app = FastAPI()
 
@@ -33,10 +35,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Setup logging at the start of the application
+logger = setup_logging()
+
 async def send_progress_update(country: str, step: str):
     progress_updates.append({"country": country, "step": step})
 
-async def process_region(region: str, technology: str) -> Dict:
+async def process_region(region: str, technology: str, start_date: Optional[str] = None) -> Dict:
     """Process all countries in a region"""
     countries = get_countries_for_region(region)
     accumulator = ResultsAccumulator()
@@ -44,8 +49,8 @@ async def process_region(region: str, technology: str) -> Dict:
     for country in countries:
         await send_progress_update(country, "starting")
         try:
-            # Process single country
-            result = await process_country(country, technology)
+            # Process single country with optional start date
+            result = await process_country(country, technology, start_date)
             
             # Add results to accumulator
             accumulator.add_country_results(
@@ -57,7 +62,7 @@ async def process_region(region: str, technology: str) -> Dict:
             await send_progress_update(country, "complete")
         except Exception as e:
             await send_progress_update(country, "error")
-            print(f"Error processing {country}: {str(e)}")
+            logger.error(f"Error processing {country}: {str(e)}")
             continue
 
     # Save final accumulated results
@@ -81,14 +86,14 @@ async def process_region(region: str, technology: str) -> Dict:
         }
     }
 
-async def process_country(country: str, technology: str) -> Dict:
+async def process_country(country: str, technology: str, startDate: Optional[str] = None) -> Dict:
     """Process a single country's data"""
     try:
         print(f"\n📍 Starting process for {country}")
         await send_progress_update(country, "searching")
         
         print(f"🔧 Creating crew for {country}")
-        energy_crew = EnergyProjectsCrew(country=country, technology=technology)
+        energy_crew = EnergyProjectsCrew(country=country, technology=technology, start_date=startDate)
         crew = energy_crew.create_crew()
         
         print(f"🚀 Executing crew for {country}")
@@ -295,24 +300,32 @@ async def get_progress():
     return EventSourceResponse(event_generator())
 
 @app.get("/api/projects")
-async def get_projects(region: str, technology: str):
+async def get_projects(
+    region: str, 
+    technology: str,
+    startDate: Optional[str] = None  # Make start date optional
+):
     try:
         load_dotenv()
         progress_updates.clear()
 
         # Validate environment variables
         if not os.getenv('SERPER_API_KEY'):
+            logger.error("SERPER_API_KEY not found in environment variables")
             raise HTTPException(status_code=500, detail="SERPER_API_KEY not found")
         if not os.getenv('OPENAI_API_KEY'):
+            logger.error("OPENAI_API_KEY not found in environment variables")
             raise HTTPException(status_code=500, detail="OPENAI_API_KEY not found")
         
-        print(f"\n🌍 Processing region {region}")
+        logger.info(f"Processing region: {region}")
         
         if not get_countries_for_region(region):
+            logger.error(f"Invalid region: {region}")
             raise HTTPException(status_code=400, detail=f"Invalid region: {region}")
 
         # Process the region and get results
-        result = await process_region(region, technology)
+        logger.info(f"Starting processing for region {region} with technology {technology}")
+        result = await process_region(region, technology, startDate)
         
         # Save the results
         output_dir = Path(__file__).parent.parent / 'output'
@@ -322,12 +335,12 @@ async def get_projects(region: str, technology: str):
         with open(output_file, 'w', encoding='utf-8') as f:
             json.dump(result, f, ensure_ascii=False, indent=2)
         
-        print("\n💾 Results saved to:", output_file)
+        logger.info(f"Results saved to: {output_file}")
         await send_progress_update("all", "complete")
         return result
 
     except Exception as e:
-        print(f"\n❌ Error in get_projects: {str(e)}")
+        logger.error(f"Error in get_projects: {str(e)}", exc_info=True)
         await send_progress_update("all", "error")
         return {"error": str(e)}
 
@@ -338,3 +351,4 @@ async def health_check():
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
+    

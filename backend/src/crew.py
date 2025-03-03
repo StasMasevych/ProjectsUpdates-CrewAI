@@ -1,51 +1,63 @@
 from crewai import Agent, Crew, Process, Task
-from crewai_tools import SerperDevTool, ScrapeWebsiteTool
+from crewai_tools import SerperDevTool, FirecrawlScrapeWebsiteTool
 from langchain.chat_models import ChatOpenAI
 import yaml
 import json
 import os
 from pathlib import Path
+import logging
+from datetime import datetime, timedelta
+from typing import Optional
+
+logger = logging.getLogger(__name__)
 
 class EnergyProjectsCrew:
     """Crew for analyzing energy projects"""
 
-    def __init__(self, country: str, technology: str):
+    def __init__(self, country: str, technology: str, start_date: Optional[str] = None):
         self.country = country
         self.technology = technology
+        self.start_date = start_date
         self.agents_config = {}
         self.tasks_config = {}
         self.load_config()
         self.setup_tools()
 
+
     def load_config(self):
         """Load configuration from YAML files"""
         try:
-            print(f"\n📝 Loading configuration files for {self.country}")
+            logger.info(f"Loading configuration files for {self.country}")
+            
+            # Calculate date for search query
+            logging.info(self.start_date)
+            search_date = self.start_date or (datetime.now() - timedelta(days=30)).strftime('%Y-%m-%d')
             
             # Load agents config
             agents_path = Path(__file__).parent / 'config' / 'agents.yaml'
             with open(agents_path, 'r') as f:
                 self.agents_config = yaml.safe_load(f)
-            print("✅ Loaded agents config")
+            logger.debug("Loaded agents config")
 
             # Load tasks config
             tasks_path = Path(__file__).parent / 'config' / 'tasks.yaml'
             with open(tasks_path, 'r') as f:
                 self.tasks_config = yaml.safe_load(f)
-            print("✅ Loaded tasks config")
+            logger.debug("Loaded tasks config")
 
-            # Format task descriptions with country and technology
-            print("\n🔄 Formatting task descriptions")
+            # Format task descriptions with country, technology and date
+            logger.info("\n🔄 Formatting task descriptions")
             for task_key, task in self.tasks_config.items():
                 if 'description' in task:
                     try:
                         task['description'] = task['description'].format(
                             country=self.country,
-                            technology=self.technology
+                            technology=self.technology,
+                            date=search_date
                         )
-                        print(f"✅ Formatted {task_key} description")
+                        logger.info(f"✅ Formatted {task_key} description")
                     except KeyError as e:
-                        print(f"❌ Error formatting {task_key} description: {str(e)}")
+                        logger.error(f"❌ Error formatting {task_key} description: {str(e)}")
                         raise
                 if 'expected_output' in task:
                     try:
@@ -53,13 +65,13 @@ class EnergyProjectsCrew:
                             country=self.country,
                             technology=self.technology
                         )
-                        print(f"✅ Formatted {task_key} expected output")
+                        logger.info(f"✅ Formatted {task_key} expected output")
                     except KeyError as e:
-                        print(f"❌ Error formatting {task_key} expected output: {str(e)}")
+                        logger.error(f"❌ Error formatting {task_key} expected output: {str(e)}")
                         raise
 
             # Format agent configurations
-            print("\n🔄 Formatting agent configurations")
+            logger.info("\n🔄 Formatting agent configurations")
             for agent_key, agent in self.agents_config.items():
                 for field in ['role', 'goal', 'backstory']:
                     if field in agent:
@@ -68,26 +80,30 @@ class EnergyProjectsCrew:
                                 country=self.country,
                                 technology=self.technology
                             )
-                            print(f"✅ Formatted {agent_key} {field}")
+                            logger.info(f"✅ Formatted {agent_key} {field}")
                         except KeyError as e:
-                            print(f"❌ Error formatting {agent_key} {field}: {str(e)}")
+                            logger.error(f"❌ Error formatting {agent_key} {field}: {str(e)}")
                             raise
 
         except Exception as e:
-            print(f"❌ Error in load_config: {str(e)}")
-            print("Full error details:")
+            logger.error(f"❌ Error in load_config: {str(e)}", exc_info=True)
             import traceback
             traceback.print_exc()
             raise
 
     def setup_tools(self):
-        self.search_tool = SerperDevTool(api_key=os.getenv('SERPER_API_KEY'))
-        self.scrape_tool = ScrapeWebsiteTool()
+        """Setup tools with date-restricted search capabilities"""
+        # Use provided start date or calculate date 6 months ago
+
+        self.search_tool = SerperDevTool(
+            api_key=os.getenv('SERPER_API_KEY')
+        )
+        self.scrape_tool = FirecrawlScrapeWebsiteTool()
 
     def create_agents(self):
         """Creates the required agents for the crew"""
         try:
-            print("\n🤖 Creating agents")
+            logger.info("\n🤖 Creating agents")
             
             researcher = Agent(
                 role=self.agents_config['web_researcher']['role'],
@@ -118,53 +134,62 @@ class EnergyProjectsCrew:
                 ),
                 verbose=True
             )
-            print("✅ Created analyst with GPT-4")
+            logger.info("✅ Created analyst with GPT-4")
 
             return [researcher, scraper, analyst]
             
         except Exception as e:
-            print(f"❌ Error creating agents: {str(e)}")
+            logger.error(f"❌ Error creating agents: {str(e)}")
             raise
 
     def create_tasks(self, agents):
         """Creates the tasks for the crew"""
         try:
-            print("\n📋 Creating tasks")
+            logger.info("\n📋 Creating tasks")
             
-            # Create tasks without the extra commas that were creating tuples
+            # Get the absolute path to the backend directory
+            backend_dir = Path(__file__).parent.parent.absolute()
+            output_dir = backend_dir / 'output'
+            output_dir.mkdir(exist_ok=True)
+            
+            logger.info(f"Using output directory: {output_dir}")
+            
+            # Create tasks with absolute paths
             search_task = Task(
                 description=self.tasks_config['search_task']['description'],
                 agent=agents[0],
                 expected_output=self.tasks_config['search_task']['expected_output'],
-                output_file='search_results.json'
+                output_file='search_results.json',  # Use relative path
+                output_dir=str(output_dir)  # Specify output directory
             )
-            print("✅ Created task for web_researcher")
+            logger.info("✅ Created task for web_researcher")
 
             scrape_task = Task(
                 description=self.tasks_config['scraping_task']['description'],
                 agent=agents[1],
                 expected_output=self.tasks_config['scraping_task']['expected_output']
             )
-            print("✅ Created task for web_scraper")
+            logger.info("✅ Created task for web_scraper")
 
             analysis_task = Task(
                 description=self.tasks_config['analysis_task']['description'],
                 agent=agents[2],
                 expected_output=self.tasks_config['analysis_task']['expected_output'],
-                output_file='analysis_results.json'
+                output_file='analysis_results.json',  # Use relative path
+                output_dir=str(output_dir)  # Specify output directory
             )
-            print("✅ Created task for data_analyst")
+            logger.info("✅ Created task for data_analyst")
 
             return [search_task, scrape_task, analysis_task]
             
         except Exception as e:
-            print(f"❌ Error creating tasks: {str(e)}")
+            logger.error(f"❌ Error creating tasks: {str(e)}")
             raise
 
     def create_crew(self):
         """Creates the energy projects analysis crew"""
         try:
-            print("\n👥 Creating crew")
+            logger.info("\n👥 Creating crew")
             agents = self.create_agents()
             tasks = self.create_tasks(agents)
             
@@ -174,9 +199,9 @@ class EnergyProjectsCrew:
                 process=Process.sequential,
                 verbose=True
             )
-            print("✅ Successfully created crew")
+            logger.info("✅ Successfully created crew")
             return crew
             
         except Exception as e:
-            print(f"❌ Error creating crew: {str(e)}")
+            logger.error(f"❌ Error creating crew: {str(e)}")
             raise 

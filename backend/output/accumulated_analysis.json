@@ -1,136 +1,81 @@
 {
   "search_results": [],
   "analysis": {
-    "timestamp": "2025-02-25T17:43:19.606305",
+    "timestamp": "2025-03-03T10:14:04.087247",
     "summary": {
-      "total_mw": 8073.6,
+      "total_mw": 549.0,
       "total_investment": 0.0,
       "countries_analyzed": [
-        "Romania",
-        "Bulgaria"
+        "United States"
       ],
       "major_developers": [
-        "Tenevo Solar Technologies EAD (joint venture of Renalfa IPP and Eurowind Energy)",
-        "Rezolv Energy",
-        "Renalfa",
-        "SUNOTEC",
-        "Various",
-        "Various (tender based)",
-        "DRI"
+        "EDP Renewables North America / Amazon",
+        "EDP Renewables North America / Microsoft",
+        "Sun Tribe Development and ENGIE"
       ],
       "project_locations": [
-        "Mureș County, Romania",
-        "Teleorman, Romania",
-        "Romania",
-        "Arad County, Romania",
-        "South of Sofia, Bulgaria",
-        "Southeastern Bulgaria",
-        "Near Silistra, Bulgaria",
-        "Bulgaria"
+        "Virginia, Tennessee, Kentucky",
+        "Madison County, Mississippi",
+        "Southern Illinois",
+        "Near Austin, Texas"
       ]
     },
     "projects_by_country": {
-      "Romania": [
+      "United States": [
         {
-          "name": "Glodeni II",
-          "location": "Mureș County, Romania",
-          "capacity": "60",
-          "developer": "DRI",
-          "investment": "€150 million (combined with Glodeni I)",
-          "timeline": "Expected operational in Summer 2025",
-          "status": "Pre-construction",
-          "source_url": "https://energyindustryreview.com/renewables/largest-ever-physical-solar-offtake-agreement-in-romania/",
-          "source_name": "Energy Industry Review"
+          "name": "Cumberland Clean Energy Projects",
+          "location": "Virginia, Tennessee, Kentucky",
+          "capacity": "49",
+          "developer": "Sun Tribe Development and ENGIE",
+          "investment": "N/A",
+          "timeline": "Expected to be operational in coming years, with construction of first project by 2026 and more by 2029.",
+          "status": "Planned",
+          "source_url": "https://www.nature.org/en-us/newsroom/cumberland-clean-energy-former-mines/",
+          "source_name": "Nature Conservancy"
         },
         {
-          "name": "258 MW Solar Project",
-          "location": "Teleorman, Romania",
-          "capacity": "258",
-          "developer": "Renalfa",
-          "investment": "Not specified",
-          "timeline": "Expected start in 2027",
-          "status": "Acquired, under development",
-          "source_url": "https://www.pv-tech.org/renalfa-acquires-258mw-romanian-solar-project/",
-          "source_name": "PV Tech"
+          "name": "Ragsdale Solar Park",
+          "location": "Madison County, Mississippi",
+          "capacity": "100",
+          "developer": "EDP Renewables North America / Amazon",
+          "investment": "N/A",
+          "timeline": "Operational since late Q4 2024.",
+          "status": "Operational",
+          "source_url": "https://solarbuildermag.com/projects/edp-renewables-amazon-new-mississippi-solar-park-projects-weekly/",
+          "source_name": "Solar Builder"
         },
         {
-          "name": "1.7 GW Solar Additions",
-          "location": "Romania",
-          "capacity": "1700",
-          "developer": "Various",
-          "investment": "Not specified",
-          "timeline": "Completed in 2024, future target of 2 GW by 2025",
-          "status": "Operational (1.7 GW installed)",
-          "source_url": "https://www.pv-magazine.com/2025/01/31/romanias-2024-solar-additions-hit-1-7-gw/",
-          "source_name": "PV Magazine"
+          "name": "Wolf Run Solar Project",
+          "location": "Southern Illinois",
+          "capacity": "140",
+          "developer": "EDP Renewables North America / Microsoft",
+          "investment": "N/A",
+          "timeline": "Planned",
+          "status": "Planned",
+          "source_url": "https://www.esgtoday.com/microsoft-purchases-389-mw-of-renewable-energy-from-new-u-s-solar-projects-with-edp/",
+          "source_name": "ESG Today"
         },
         {
-          "name": "Arad County Solar Farm",
-          "location": "Arad County, Romania",
-          "capacity": "1044",
-          "developer": "Rezolv Energy",
-          "investment": "Not specified",
-          "timeline": "Expected operational in 2025",
-          "status": "Pre-construction",
-          "source_url": "https://www.glintsolar.com/blog/discover-europes-top-solar-projects-a-pre-construction-preview-for-2023",
-          "source_name": "Glint Solar"
-        }
-      ],
-      "Bulgaria": [
-        {
-          "name": "Verila Project",
-          "location": "South of Sofia, Bulgaria",
-          "capacity": "124",
-          "developer": "SUNOTEC",
-          "investment": "Not specified",
-          "timeline": "September 2022 - Spring 2023",
-          "status": "Under construction",
-          "source_url": "https://energyindustryreview.com/renewables/verila-project-bulgarias-largest-solar-power-plant/",
-          "source_name": "Energy Industry Review"
+          "name": "Hickory Solar Project",
+          "location": "Southern Illinois",
+          "capacity": "110",
+          "developer": "EDP Renewables North America / Microsoft",
+          "investment": "N/A",
+          "timeline": "Planned",
+          "status": "Planned",
+          "source_url": "https://www.esgtoday.com/microsoft-purchases-389-mw-of-renewable-energy-from-new-u-s-solar-projects-with-edp/",
+          "source_name": "ESG Today"
         },
         {
-          "name": "237.6 MW Merchant Solar Plant",
-          "location": "Southeastern Bulgaria",
-          "capacity": "237.6",
-          "developer": "Tenevo Solar Technologies EAD (joint venture of Renalfa IPP and Eurowind Energy)",
-          "investment": "€103 million ($107.2 million)",
-          "timeline": "Not specified",
-          "status": "Financing secured",
-          "source_url": "https://www.pv-magazine.com/2024/11/22/funding-secured-for-237-6-mw-merchant-solar-plant-in-bulgaria/",
-          "source_name": "PV Magazine"
-        },
-        {
-          "name": "225 MW Solar PV Plant",
-          "location": "Near Silistra, Bulgaria",
-          "capacity": "225",
-          "developer": "Rezolv Energy",
-          "investment": "€90 million (part of a debt package)",
-          "timeline": "Not specified",
-          "status": "Financing secured",
-          "source_url": "https://www.ifc.org/en/pressroom/2024/ifc-supports-major-solar-power-project-to-drive-bulgaria-s-renewable-energy-goals",
-          "source_name": "IFC"
-        },
-        {
-          "name": "1.425 GW Renewables Tenders",
-          "location": "Bulgaria",
-          "capacity": "1425",
-          "developer": "Various (tender based)",
-          "investment": "BGN 535.1 million ($298.2 million)",
-          "timeline": "2024 - Proposals due by 12 June 2024",
-          "status": "Tender launched",
-          "source_url": "https://www.pv-tech.org/bulgaria-adds-renewables-to-grid/",
-          "source_name": "PV Tech"
-        },
-        {
-          "name": "3 GWh Standalone Energy Storage",
-          "location": "Bulgaria",
-          "capacity": "3000",
-          "developer": "Various (tender based)",
-          "investment": "BGN 1.154 billion (total proposals)",
-          "timeline": "Not specified - By March 2026",
-          "status": "Heavily oversubscribed tender",
-          "source_url": "https://www.ess-news.com/2024/12/09/bulgarias-3-gwh-standalone-battery-storage-tender-heavily-oversubscribed/",
-          "source_name": "ESS News"
+          "name": "Cattlemen II Solar Project",
+          "location": "Near Austin, Texas",
+          "capacity": "150",
+          "developer": "EDP Renewables North America / Microsoft",
+          "investment": "N/A",
+          "timeline": "Planned",
+          "status": "Planned",
+          "source_url": "https://www.esgtoday.com/microsoft-purchases-389-mw-of-renewable-energy-from-new-u-s-solar-projects-with-edp/",
+          "source_name": "ESG Today"
         }
       ]
     }

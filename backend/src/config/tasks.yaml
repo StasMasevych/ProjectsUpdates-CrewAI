@@ -1,6 +1,7 @@
 search_task:
   description: >-
-    Search for new {technology} energy projects in {country} from the last 6 months.
+    Search for new {technology} energy projects in {country}.
+    Use this search query format (can be improved): 'after:{date} new "{technology}" "energy" projects in {country} '.
     Focus on project sizes, locations, developers, and investment values.
     Use SerperDev to find relevant news articles and project announcements.
   expected_output: >-
@@ -18,7 +19,9 @@ scraping_task:
     - Timeline
     - Current status
   expected_output: >-
-    Structured data from each website in JSON format containing all available project details
+    Structured data from each website in JSON format containing all available project details. 
+    Use valid values in Json values. Make sure to put pure number, in the corner case - use quotes.
+    Don't use commas in numbers to avoid parsing errors.
   agent: web_scraper
 
 analysis_task:

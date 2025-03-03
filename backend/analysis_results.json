@@ -1,67 +1,67 @@
 ```json
 {
   "Summary": {
-    "Total MW of new projects": 2009.6,
-    "Total investment value": "$1.65 billion",
-    "Key trends in project locations": ["Sofia", "Silistra", "Southeastern Bulgaria"],
-    "Major developers active in the market": ["SUNOTEC", "Tenevo Solar Technologies EAD", "Rezolv Energy"],
-    "Project development timelines": ["Under construction", "Financing secured", "Tender launched", "Heavily oversubscribed tender"]
+    "Total MW of new projects": 399,
+    "Total investment value": "N/A",
+    "Key trends in project locations": ["Appalachian mountains", "Illinois", "Texas", "Mississippi"],
+    "Major developers active in the market": ["EDP Renewables North America", "Sun Tribe Development", "Microsoft", "TotalEnergies"],
+    "Project development timelines": ["Operational since late Q4 2024", "Expected to be operational by 2026", "Planned for 2029"]
   },
   "Detailed Project List": [
     {
-      "ProjectName": "Verila Project",
-      "Location": "South of Sofia, Bulgaria",
-      "Capacity_MW": 124,
-      "Developer": "SUNOTEC",
-      "InvestmentValue": "Not specified",
-      "Timeline": "September 2022 - Spring 2023",
-      "CurrentStatus": "Under construction",
-      "source_url": "https://energyindustryreview.com/renewables/verila-project-bulgarias-largest-solar-power-plant/",
-      "source_name": "Energy Industry Review"
+      "ProjectName": "Cumberland Clean Energy Projects",
+      "Location": "Virginia, Tennessee, Kentucky",
+      "Capacity_MW": 49,
+      "Developer": "Sun Tribe Development and ENGIE",
+      "InvestmentValue": "N/A",
+      "Timeline": "Expected to be operational in coming years, with construction of first project by 2026 and more by 2029.",
+      "CurrentStatus": "Planned",
+      "source_url": "https://www.nature.org/en-us/newsroom/cumberland-clean-energy-former-mines/",
+      "source_name": "Nature Conservancy"
     },
     {
-      "ProjectName": "237.6 MW Merchant Solar Plant",
-      "Location": "Southeastern Bulgaria",
-      "Capacity_MW": 237.6,
-      "Developer": "Tenevo Solar Technologies EAD (joint venture of Renalfa IPP and Eurowind Energy)",
-      "InvestmentValue": "€103 million ($107.2 million)",
-      "Timeline": "Not specified",
-      "CurrentStatus": "Financing secured",
-      "source_url": "https://www.pv-magazine.com/2024/11/22/funding-secured-for-237-6-mw-merchant-solar-plant-in-bulgaria/",
-      "source_name": "PV Magazine"
+      "ProjectName": "Ragsdale Solar Park",
+      "Location": "Madison County, Mississippi",
+      "Capacity_MW": 100,
+      "Developer": "EDP Renewables North America / Amazon",
+      "InvestmentValue": "N/A",
+      "Timeline": "Operational since late Q4 2024.",
+      "CurrentStatus": "Operational",
+      "source_url": "https://solarbuildermag.com/projects/edp-renewables-amazon-new-mississippi-solar-park-projects-weekly/",
+      "source_name": "Solar Builder"
     },
     {
-      "ProjectName": "225 MW Solar PV Plant",
-      "Location": "Near Silistra, Bulgaria",
-      "Capacity_MW": 225,
-      "Developer": "Rezolv Energy",
-      "InvestmentValue": "€90 million (part of a debt package)",
-      "Timeline": "Not specified",
-      "CurrentStatus": "Financing secured",
-      "source_url": "https://www.ifc.org/en/pressroom/2024/ifc-supports-major-solar-power-project-to-drive-bulgaria-s-renewable-energy-goals",
-      "source_name": "IFC"
+      "ProjectName": "Wolf Run Solar Project",
+      "Location": "Southern Illinois",
+      "Capacity_MW": 140,
+      "Developer": "EDP Renewables North America / Microsoft",
+      "InvestmentValue": "N/A",
+      "Timeline": "Planned",
+      "CurrentStatus": "Planned",
+      "source_url": "https://www.esgtoday.com/microsoft-purchases-389-mw-of-renewable-energy-from-new-u-s-solar-projects-with-edp/",
+      "source_name": "ESG Today"
     },
     {
-      "ProjectName": "1.425 GW Renewables Tenders",
-      "Location": "Bulgaria",
-      "Capacity_MW": 1425,
-      "Developer": "Various (tender based)",
-      "InvestmentValue": "BGN 535.1 million ($298.2 million)",
-      "Timeline": "2024 - Proposals due by 12 June 2024",
-      "CurrentStatus": "Tender launched",
-      "source_url": "https://www.pv-tech.org/bulgaria-adds-renewables-to-grid/",
-      "source_name": "PV Tech"
+      "ProjectName": "Hickory Solar Project",
+      "Location": "Southern Illinois",
+      "Capacity_MW": 110,
+      "Developer": "EDP Renewables North America / Microsoft",
+      "InvestmentValue": "N/A",
+      "Timeline": "Planned",
+      "CurrentStatus": "Planned",
+      "source_url": "https://www.esgtoday.com/microsoft-purchases-389-mw-of-renewable-energy-from-new-u-s-solar-projects-with-edp/",
+      "source_name": "ESG Today"
     },
     {
-      "ProjectName": "3 GWh Standalone Energy Storage",
-      "Location": "Bulgaria",
-      "Capacity_MW": 3000,
-      "Developer": "Various (tender based)",
-      "InvestmentValue": "BGN 1.154 billion (total proposals)",
-      "Timeline": "Not specified - By March 2026",
-      "CurrentStatus": "Heavily oversubscribed tender",
-      "source_url": "https://www.ess-news.com/2024/12/09/bulgarias-3-gwh-standalone-battery-storage-tender-heavily-oversubscribed/",
-      "source_name": "ESS News"
+      "ProjectName": "Cattlemen II Solar Project",
+      "Location": "Near Austin, Texas",
+      "Capacity_MW": 150,
+      "Developer": "EDP Renewables North America / Microsoft",
+      "InvestmentValue": "N/A",
+      "Timeline": "Planned",
+      "CurrentStatus": "Planned",
+      "source_url": "https://www.esgtoday.com/microsoft-purchases-389-mw-of-renewable-energy-from-new-u-s-solar-projects-with-edp/",
+      "source_name": "ESG Today"
     }
   ]
 }

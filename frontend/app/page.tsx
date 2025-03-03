@@ -67,6 +67,7 @@ export default function Home() {
   const [result, setResult] = useState<ApiResponse | null>(null);
   const [selectedRegion, setSelectedRegion] = useState<string>("");
   const [selectedTechnology, setSelectedTechnology] = useState<string>("");
+  const [startDate, setStartDate] = useState<string>("");
   const [error, setError] = useState<string>("");
 
   const getStepEmoji = (step: string): string => {
@@ -113,13 +114,20 @@ export default function Home() {
     };
 
     try {
+      // Add startDate to query params if provided
+      const queryParams = new URLSearchParams({
+        region: selectedRegion,
+        technology: selectedTechnology,
+        ...(startDate && { startDate: startDate })  // Only add if date is selected
+      });
+
       console.log(
         "Fetching from:",
-        `${API_BASE_URL}/api/projects?region=${selectedRegion}&technology=${selectedTechnology}`
+        `${API_BASE_URL}/api/projects?${queryParams}`
       );
 
       const response = await fetch(
-        `${API_BASE_URL}/api/projects?region=${selectedRegion}&technology=${selectedTechnology}`,
+        `${API_BASE_URL}/api/projects?${queryParams}`,
         {
           method: "GET",
           headers: {
@@ -197,6 +205,22 @@ export default function Home() {
         >
           {loading ? "Processing..." : "Analyze Projects"}
         </button>
+      </div>
+
+      {/* Add date input */}
+      <div className="mb-4">
+        <label className="block text-sm font-medium mb-2">
+          Start Date (Optional)
+        </label>
+        <input
+          type="date"
+          value={startDate}
+          onChange={(e) => setStartDate(e.target.value)}
+          className="p-2 border rounded"
+        />
+        <p className="text-sm text-gray-500 mt-1">
+          Leave empty to search last 6 months
+        </p>
       </div>
 
       {/* Progress Display */}
