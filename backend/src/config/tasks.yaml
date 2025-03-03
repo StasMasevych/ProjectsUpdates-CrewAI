@@ -14,7 +14,6 @@ scraping_task:
     - Project name and location
     - Capacity (MW)
     - Developer/Company
-    - Investment value
     - Timeline
     - Current status
   expected_output: >-
@@ -27,11 +26,11 @@ analysis_task:
     The output must follow this exact structure:
     {{
       "Summary": {{
-        "Total MW of new projects": <number>,
-        "Total investment value": "<string>",
-        "Key trends in project locations": ["<string>"],
         "Major developers active in the market": ["<string>"],
-        "Project development timelines": ["<string>"]
+        "Most promising projects":
+      - "<string: Project name> - <Why it's promising; why foreign EPCs/investors should consider it>"
+      - "<string: Project name> - <Why it's promising; why foreign EPCs/investors should consider it>"
+      - "<string: Project name> - <Why it's promising; why foreign EPCs/investors should consider it>"
       }},
       "Detailed Project List": [
         {{
@@ -39,11 +38,20 @@ analysis_task:
           "Location": "<string>",
           "Capacity_MW": <number>,
           "Developer": "<string>",
-          "InvestmentValue": "<string>",
           "Timeline": "<string>",
           "CurrentStatus": "<string>",
           "source_url": "<string>",
-          "source_name": "<string>"
+          "source_name": "<string>",
+          "category": "<string: development | investment | planning>",
+          "Date": "<string: MM/DD/YYYY>",
+          "KeyPoints": [
+            "<string point 1>",
+            "<string point 2>",
+            "<string point 3>",
+            "<string point 4>",
+            "<string point 5>",
+            "<string point 6>"
+          ]
         }}
       ]
     }}

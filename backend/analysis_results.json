@@ -1,67 +1,158 @@
 ```json
 {
   "Summary": {
-    "Total MW of new projects": 1260,
-    "Total investment value": "$143.5 million",
-    "Key trends in project locations": ["Ukraine", "Odesa Region"],
-    "Major developers active in the market": ["DTEK", "Fluence Energy", "GÜRİŞ", "SPP Development"],
-    "Project development timelines": ["By October 2025", "Ongoing", "2022-2024"]
+    "Major developers active in the market": [
+      "DTEK",
+      "Energy Act for Ukraine Foundation",
+      "RePower Ukraine Charitable Foundation",
+      "Various Agricultural Companies"
+    ],
+    "Most promising projects": [
+      "National Renewable Energy Action Plan - This project aims to achieve a national goal of 24 GW of renewable energy capacity by 2030, making it a significant opportunity for foreign EPCs and investors to engage in a large-scale renewable initiative.",
+      "Solar Power Capacity Expansion 2024 - With the installation of 800-850 MW of new capacity in 2024, this project showcases the resilience and growth potential of Ukraine's solar sector, attracting foreign investment.",
+      "Brovary Regional Hospital Solar Installation - This project not only contributes to renewable energy but also supports critical infrastructure, making it an attractive investment for those looking to make a social impact."
+    ]
   },
   "Detailed Project List": [
     {
-      "ProjectName": "DTEK and Fluence BESS",
+      "ProjectName": "Solar Power Capacity Expansion 2024",
       "Location": "Ukraine",
-      "Capacity_MW": 200,
+      "Capacity_MW": 825,
+      "Developer": "Various Businesses and Households",
+      "Timeline": "2024 - End of 2024",
+      "CurrentStatus": "Operational",
+      "source_url": "https://renewablesnow.com/news/ukraines-solar-sector-installs-over-800-mw-of-capacity-in-2024-aseu-1269243/",
+      "source_name": "Renewables Now",
+      "category": "development",
+      "Date": "01/01/2024",
+      "KeyPoints": [
+        "Installed capacity between 800 MW and 850 MW.",
+        "Demonstrates resilience during conflict.",
+        "Involves various local businesses and households.",
+        "Supports energy independence.",
+        "Encourages community engagement.",
+        "Potential for further expansion."
+      ]
+    },
+    {
+      "ProjectName": "National Renewable Energy Action Plan",
+      "Location": "Ukraine",
+      "Capacity_MW": 24000,
+      "Developer": "Government of Ukraine",
+      "Timeline": "2024 - 2030",
+      "CurrentStatus": "In Development",
+      "source_url": "https://www.dentons.com/en/insights/articles/2024/august/20/ukrainian-government-approves-national-renewable-energy-action-plan",
+      "source_name": "Dentons",
+      "category": "investment",
+      "Date": "08/20/2024",
+      "KeyPoints": [
+        "Aims for 24 GW of renewable energy capacity.",
+        "Includes a 110 MW RES auction.",
+        "Focus on high maneuverable energy sources.",
+        "Government-backed initiative.",
+        "Long-term investment opportunity.",
+        "Aligns with EU energy goals."
+      ]
+    },
+    {
+      "ProjectName": "Brovary Regional Hospital Solar Installation",
+      "Location": "Brovary, Kyiv region",
+      "Capacity_MW": 24,
+      "Developer": "Energy Act for Ukraine Foundation",
+      "Timeline": "2024 - 2024",
+      "CurrentStatus": "Operational",
+      "source_url": "https://www.solarpowereurope.org/news/war-in-ukraine-three-years-on-solar-supports-ukraine",
+      "source_name": "Solar Power Europe",
+      "category": "development",
+      "Date": "01/01/2024",
+      "KeyPoints": [
+        "Supports critical healthcare infrastructure.",
+        "Promotes renewable energy in public services.",
+        "Operational within the same year.",
+        "Enhances energy security for hospitals.",
+        "Potential for replication in other regions.",
+        "Contributes to local job creation."
+      ]
+    },
+    {
+      "ProjectName": "Kharkiv Children's Hospital Solar Installation",
+      "Location": "Kharkiv, Ukraine",
+      "Capacity_MW": 30,
+      "Developer": "RePower Ukraine Charitable Foundation",
+      "Timeline": "2024 - 2024",
+      "CurrentStatus": "Operational",
+      "source_url": "https://www.solarpowereurope.org/news/war-in-ukraine-three-years-on-solar-supports-ukraine",
+      "source_name": "Solar Power Europe",
+      "category": "development",
+      "Date": "01/01/2024",
+      "KeyPoints": [
+        "Focuses on renewable energy for children's healthcare.",
+        "Operational within the same year.",
+        "Enhances energy resilience in critical facilities.",
+        "Supports community health initiatives.",
+        "Potential for further installations in other hospitals.",
+        "Aligns with humanitarian efforts."
+      ]
+    },
+    {
+      "ProjectName": "DTEK Tiligul Wind Power Plant",
+      "Location": "Mykolaiv region",
+      "Capacity_MW": 78,
       "Developer": "DTEK",
-      "InvestmentValue": "$143.5 million",
-      "Timeline": "By October 2025",
-      "CurrentStatus": "In development",
-      "source_url": "https://www.energy-storage.news/dtek-enlists-fluence-for-200mw-400mwh-of-grid-supporting-bess-in-ukraine/",
-      "source_name": "Energy Storage News"
+      "Timeline": "2023 - 2023",
+      "CurrentStatus": "Operational",
+      "source_url": "https://www.evwind.es/2025/01/09/photovoltaic-solar-power-capacity-in-ukraine-grows-by-800-850-mw-in-2024-solar-energy-association-head/103709",
+      "source_name": "Evwind",
+      "category": "development",
+      "Date": "01/09/2023",
+      "KeyPoints": [
+        "Operational wind power plant.",
+        "Diversifies renewable energy sources.",
+        "Contributes to energy independence.",
+        "Supports local economy.",
+        "Enhances grid stability.",
+        "Potential for future expansions."
+      ]
     },
     {
-      "ProjectName": "Fluence Energy Storage Across Ukraine",
-      "Location": "Six sites across Ukraine",
-      "Capacity_MW": 200,
-      "Developer": "Fluence Energy",
-      "InvestmentValue": "N/A",
-      "Timeline": "Operational by October 2025",
-      "CurrentStatus": "In development",
-      "source_url": "https://www.energytech.com/energy-storage/article/55260746/battery-maker-fluence-energy-contracted-to-deliver-200-mw-energy-storage-across-ukraine",
-      "source_name": "Energy Tech"
+      "ProjectName": "Various Small Solar Power Installations",
+      "Location": "Various regions across Ukraine",
+      "Capacity_MW": 500,
+      "Developer": "DTEK Networks",
+      "Timeline": "2023 - 2023",
+      "CurrentStatus": "Operational",
+      "source_url": "https://ukraineinvest.gov.ua/en/industries/energy/renewable-energy/",
+      "source_name": "Ukraine Invest",
+      "category": "development",
+      "Date": "01/01/2023",
+      "KeyPoints": [
+        "Multiple small-scale installations.",
+        "Promotes local energy generation.",
+        "Supports community resilience.",
+        "Operational within the same year.",
+        "Encourages local investment.",
+        "Potential for further small-scale projects."
+      ]
     },
     {
-      "ProjectName": "GÜRİŞ Solar and Battery Storage Projects",
-      "Location": "Odesa Region, Ukraine",
-      "Capacity_MW": "N/A",
-      "Developer": "GÜRİŞ",
-      "InvestmentValue": "N/A",
-      "Timeline": "Ongoing",
-      "CurrentStatus": "In development",
-      "source_url": "https://www.dentons.com/en/about-dentons/news-events-and-awards/news/2025/january/dentons-advised-guris-on-new-solar-and-battery-storage-projects-in-ukraine",
-      "source_name": "Dentons"
-    },
-    {
-      "ProjectName": "SPP Development 200 MW BESS",
-      "Location": "Ukraine",
-      "Capacity_MW": 200,
-      "Developer": "SPP Development",
-      "InvestmentValue": "N/A",
-      "Timeline": "N/A",
-      "CurrentStatus": "Recently unveiled",
-      "source_url": "https://sppdevelopment.com.ua/new-200-mw-bess-project/",
-      "source_name": "SPP Development"
-    },
-    {
-      "ProjectName": "Renewable Energy Capacity Addition",
-      "Location": "Ukraine",
-      "Capacity_MW": 860,
-      "Developer": "Multiple developers",
-      "InvestmentValue": "N/A",
-      "Timeline": "2022-2024",
-      "CurrentStatus": "Completed",
-      "source_url": "https://www.linkedin.com/posts/battery-industry_ukraine-adds-over-860-mw-of-renewable-energy-activity-7274028771001663488-vDug",
-      "source_name": "LinkedIn"
+      "ProjectName": "Agrivoltaics Development",
+      "Location": "Various regions in Ukraine",
+      "Capacity_MW": "TBD",
+      "Developer": "Various Agricultural Companies",
+      "Timeline": "2025 - TBD",
+      "CurrentStatus": "Planned",
+      "source_url": "https://uwecworkgroup.info/prospect-for-renewable-energy-in-wartime-how-ukraine-plans-to-ensure-energy-independence-using-green-generation/",
+      "source_name": "UWE Workgroup",
+      "category": "planning",
+      "Date": "01/01/2025",
+      "KeyPoints": [
+        "Integrates agriculture with solar energy.",
+        "Supports food security and energy independence.",
+        "Planned for future development.",
+        "Potential for innovative farming practices.",
+        "Encourages sustainable land use.",
+        "Aligns with national energy goals."
+      ]
     }
   ]
 }

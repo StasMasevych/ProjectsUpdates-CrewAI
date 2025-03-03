@@ -14,6 +14,10 @@ interface Project {
   source_url: string;
   source_name: string;
   status: string;
+  category: string;
+  date: string;
+  project_status: string;
+  keyPoints: string[];
 }
 
 interface AnalysisSummary {
@@ -22,6 +26,7 @@ interface AnalysisSummary {
   countries_analyzed: string[];
   major_developers: string[];
   project_locations: string[];
+  key_trends: string;
 }
 
 interface AccumulatedAnalysis {
@@ -342,19 +347,48 @@ export default function Home() {
                               </div>
                             </div>
 
+                            {/* Key Points */}
+                            <div className="mt-3 pt-3 border-t border-gray-100">
+                              <h6 className="font-medium text-sm mb-2">
+                                Key Points:
+                              </h6>
+                              <ul className="list-disc pl-5 text-sm space-y-1">
+                                {project.keyPoints &&
+                                project.keyPoints.length > 0 ? (
+                                  project.keyPoints.map((point, idx) => (
+                                    <li key={idx}>{point}</li>
+                                  ))
+                                ) : (
+                                  <li>No key points available</li>
+                                )}
+                              </ul>
+                            </div>
+
                             {/* Status Badge */}
-                            <div className="pt-2">
+                            <div className="pt-2 flex flex-wrap gap-2">
                               <span
-                                className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
-                              ${
-                                project.status === "Completed"
-                                  ? "bg-green-100 text-green-800"
-                                  : project.status === "Under Construction"
-                                  ? "bg-yellow-100 text-yellow-800"
-                                  : "bg-blue-100 text-blue-800"
-                              }`}
+                                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+                                bg-blue-100 text-blue-800"
                               >
-                                {project.status}
+                                Status: {project.status}
+                              </span>
+                              <span
+                                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+                                bg-green-100 text-green-800"
+                              >
+                                Category: {project.category}
+                              </span>
+                              <span
+                                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+                                bg-purple-100 text-purple-800"
+                              >
+                                Project Status: {project.project_status}
+                              </span>
+                              <span
+                                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+                                bg-yellow-100 text-yellow-800"
+                              >
+                                Date: {project.date}
                               </span>
                             </div>
 
@@ -365,15 +399,17 @@ export default function Home() {
                                   <span className="text-lg mr-2">📰</span>
                                   Source: {project.source_name}
                                 </p>
-                                <a
-                                  href={project.source_url}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="text-blue-600 hover:text-blue-800 hover:underline flex items-center"
-                                >
-                                  <span className="text-lg mr-2">🔗</span>
-                                  Read More
-                                </a>
+                                {project.source_url && (
+                                  <a
+                                    href={project.source_url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-blue-600 hover:text-blue-800 hover:underline flex items-center"
+                                  >
+                                    <span className="text-lg mr-2">🔗</span>
+                                    Read More
+                                  </a>
+                                )}
                               </div>
                             </div>
                           </div>

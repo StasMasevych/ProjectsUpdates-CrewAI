@@ -17,7 +17,8 @@ class ResultsAccumulator:
                 "total_investment": 0.0,
                 "countries_analyzed": [],
                 "major_developers": set(),
-                "project_locations": []
+                "project_locations": [],
+                "key_trends": "Analysis of projects across multiple countries shows varying stages of development."
             },
             "projects_by_country": {}
         }
@@ -54,7 +55,12 @@ class ResultsAccumulator:
                     "timeline": project.get("Timeline", project.get("timeline", "N/A")),
                     "status": project.get("CurrentStatus", project.get("status", "N/A")),
                     "source_url": project.get("source_url", ""),
-                    "source_name": project.get("source_name", country)
+                    "source_name": project.get("source_name", country),
+                    # New fields from tasks.yaml
+                    "category": project.get("category", "development"),
+                    "date": project.get("date", datetime.now().strftime("%m/%d/%Y")),
+                    "project_status": project.get("status", "Ongoing"),
+                    "keyPoints": project.get("KeyPoints", [])  # Use AI-generated KeyPoints directly
                 }
                 standardized_projects.append(standardized_project)
 
@@ -77,6 +83,16 @@ class ResultsAccumulator:
                 # Update major developers
                 if project["developer"] != "Unknown":
                     self.accumulated_analysis["summary"]["major_developers"].add(project["developer"])
+
+            # Extract key trends if available
+            if "Summary" in analysis_results and "key_trends" in analysis_results["Summary"]:
+                country_key_trends = analysis_results["Summary"]["key_trends"]
+                # Append country-specific trends to the overall key_trends
+                current_trends = self.accumulated_analysis["summary"]["key_trends"]
+                if current_trends == "Analysis of projects across multiple countries shows varying stages of development.":
+                    self.accumulated_analysis["summary"]["key_trends"] = f"{country}: {country_key_trends}"
+                else:
+                    self.accumulated_analysis["summary"]["key_trends"] += f"\n\n{country}: {country_key_trends}"
 
     def get_results(self) -> Dict:
         """Get the current accumulated results"""

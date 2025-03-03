@@ -264,6 +264,7 @@ def standardize_country_result(result: any, country: str) -> Dict:
 
 def normalize_project(project: Dict, country: str) -> Dict:
     """Normalize project data to a consistent format"""
+    # Use the structure from tasks.yaml
     if 'ProjectName' in project:
         return {
             "name": project.get("ProjectName", "Unknown"),
@@ -274,7 +275,12 @@ def normalize_project(project: Dict, country: str) -> Dict:
             "timeline": project.get("Timeline", "N/A"),
             "source_url": project.get("source_url", ""),
             "source_name": project.get("source_name", country),
-            "status": project.get("CurrentStatus", "N/A")
+            "status": project.get("CurrentStatus", "N/A"),
+            # New fields from tasks.yaml
+            "category": project.get("category", "development"),
+            "date": project.get("Date", datetime.now().strftime("%m/%d/%Y")),
+            "project_status": project.get("CurrentStatus", "Ongoing"),
+            "keyPoints": project.get("KeyPoints", [])  # Use AI-generated KeyPoints directly
         }
     return {
         "name": project.get("name", "Unknown"),
@@ -285,7 +291,12 @@ def normalize_project(project: Dict, country: str) -> Dict:
         "timeline": project.get("timeline", "N/A"),
         "source_url": project.get("source_url", ""),
         "source_name": project.get("source_name", country),
-        "status": project.get("status", "N/A")
+        "status": project.get("status", "N/A"),
+        # New fields from tasks.yaml
+        "category": project.get("category", "development"),
+        "date": project.get("date", datetime.now().strftime("%m/%d/%Y")),
+        "project_status": project.get("project_status", "Ongoing"),
+        "keyPoints": project.get("keyPoints", [])  # Use AI-generated keyPoints directly
     }
 
 @app.get("/api/progress")
