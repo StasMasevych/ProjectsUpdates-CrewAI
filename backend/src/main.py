@@ -211,6 +211,10 @@ def standardize_country_result(result: any, country: str) -> Dict:
         print("\n📋 Extracted projects:")
         print(json.dumps(projects, indent=2))
         
+        # Generate today's date in MM/DD/YYYY format - use this for ALL projects
+        today_date = datetime.now().strftime("%m/%d/%Y")
+        print(f"Using today's date for all projects: {today_date}")
+        
         # Standardize each project
         print("\n🔄 Standardizing individual projects")
         for project in projects:
@@ -243,7 +247,7 @@ def standardize_country_result(result: any, country: str) -> Dict:
                 "source_url": project.get("source_url", ""),
                 "source_name": project.get("source_name", country),
                 "category": project.get("category", "development"),
-                "date": project.get("Date") or project.get("date", datetime.now().strftime("%m/%d/%Y")),
+                "date": today_date,  # Always use today's date
                 "keyPoints": key_points,
                 "partners": partners
             }
@@ -251,6 +255,7 @@ def standardize_country_result(result: any, country: str) -> Dict:
             print("Standardized project:", json.dumps(standardized_project, indent=2))
             print(f"Key points: {key_points}")
             print(f"Partners: {partners}")
+            print(f"Date: {today_date}")
 
         print(f"\n✅ Successfully standardized {len(standardized_projects)} projects")
         
@@ -310,6 +315,9 @@ def normalize_project(project: Dict, country: str) -> Dict:
     elif "Partners" in project and isinstance(project["Partners"], list):
         partners = project["Partners"]
     
+    # Always use today's date for all projects
+    today_date = datetime.now().strftime("%m/%d/%Y")
+    
     if 'ProjectName' in project:
         return {
             "name": project.get("ProjectName", "Unknown"),
@@ -323,7 +331,7 @@ def normalize_project(project: Dict, country: str) -> Dict:
             "status": project.get("CurrentStatus", "N/A"),
             # New fields from tasks.yaml
             "category": project.get("category", "development"),
-            "date": project.get("Date", datetime.now().strftime("%m/%d/%Y")),
+            "date": today_date,  # Always use today's date
             "keyPoints": key_points,  # Use consistent lowercase keyPoints for frontend
             "partners": partners  # Add the new partners field
         }
@@ -339,7 +347,7 @@ def normalize_project(project: Dict, country: str) -> Dict:
         "status": project.get("status", "N/A"),
         # New fields from tasks.yaml
         "category": project.get("category", "development"),
-        "date": project.get("date", datetime.now().strftime("%m/%d/%Y")),
+        "date": today_date,  # Always use today's date
         "keyPoints": key_points,  # Use consistent lowercase keyPoints for frontend
         "partners": partners  # Add the new partners field
     }

@@ -43,6 +43,10 @@ class ResultsAccumulator:
             elif "raw_result" in analysis_results and "projects" in analysis_results["raw_result"]:
                 projects = analysis_results["raw_result"]["projects"]
 
+            # Generate today's date in MM/DD/YYYY format - use this for ALL projects
+            today_date = datetime.now().strftime("%m/%d/%Y")
+            print(f"Using today's date for all projects: {today_date}")
+
             # Standardize and store projects
             standardized_projects = []
             for project in projects:
@@ -69,10 +73,14 @@ class ResultsAccumulator:
                 if not isinstance(key_points, list):
                     key_points = []
                 
-                # Check for partners field
+                # Check for partners field with more flexibility
                 partners = []
                 if "partners" in project and isinstance(project["partners"], list):
+                    print(f"Found partners (lowercase p): {project['partners']}")
                     partners = project["partners"]
+                elif "Partners" in project and isinstance(project["Partners"], list):
+                    print(f"Found Partners (capital P): {project['Partners']}")
+                    partners = project["Partners"]
                 
                 standardized_project = {
                     "name": project.get("ProjectName", project.get("name", "Unknown")),
@@ -86,7 +94,7 @@ class ResultsAccumulator:
                     "source_name": project.get("source_name", country),
                     # New fields from tasks.yaml
                     "category": project.get("category", "development"),
-                    "date": project.get("Date", project.get("date", datetime.now().strftime("%m/%d/%Y"))),
+                    "date": today_date,  # Always use today's date
                     "keyPoints": key_points,  # Use consistent lowercase keyPoints for frontend
                     "partners": partners  # Add the partners field
                 }
@@ -95,6 +103,7 @@ class ResultsAccumulator:
                 # Debug the standardized project
                 print(f"Standardized project keyPoints: {standardized_project['keyPoints']}")
                 print(f"Standardized project partners: {standardized_project['partners']}")
+                print(f"Standardized project date: {standardized_project['date']}")
 
             # Store standardized projects for this country
             self.accumulated_analysis["projects_by_country"][country] = standardized_projects
