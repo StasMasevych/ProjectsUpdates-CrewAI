@@ -1,43 +1,27 @@
 [
     {
-        "URL": "https://renewablesnow.com/news/ukraines-solar-sector-installs-over-800-mw-of-capacity-in-2024-aseu-1269243/",
-        "description": "The Ukrainian solar power sector installed between 800 MW and 850 MW of new capacity in 2024, despite living under a full-scale invasion."
+        "url": "https://ceenergynews.com/renewables/greenvolt-byd-energy-storage-poland/",
+        "description": "Greenvolt Power has signed an agreement with BYD Energy Storage to develop battery energy storage projects of up to 1.6 GWh in Poland."
     },
     {
-        "URL": "https://www.wilsoncenter.org/article/ukraines-energy-future-modern-blueprint-american-inspiration",
-        "description": "Over the past year, the country has managed to bring over 200 MW of new energy capacity online thanks to significant reforms that have ... ."
+        "url": "https://www.pvknowhow.com/solar-report/poland/",
+        "description": "This report provides detailed market analysis, production statistics, and industry insights of solar panel manufacturing in Poland."
     },
     {
-        "URL": "https://www.dentons.com/en/insights/articles/2025/january/29/ukrainian-parliament-approves-revolutionary-law-changing-grid-connection-of-renewables",
-        "description": "A new law that will significantly improve the grid connection of renewables was approved by the Ukraine's parliament, the Verkhovna Rada, on January 14, 2025."
+        "url": "https://xpert.digital/en/new-solar-projects-in-poland/",
+        "description": "The article discusses Poland's development in the solar energy sector, highlighting 1,500 construction projects and 19 GW of new solar projects in the planning stage."
     },
     {
-        "URL": "https://uwecworkgroup.info/prospect-for-renewable-energy-in-wartime-how-ukraine-plans-to-ensure-energy-independence-using-green-generation/",
-        "description": "The plan sets a national goal for achieving 24 GW of renewable energy generation capacity and a 27% share of renewable energy in gross final energy consumption."
+        "url": "https://www.aa.com.tr/en/energy/general/equinor-s-first-solar-plant-in-poland-ready-for-operation/36533",
+        "description": "Equinor has completed its first solar plant in Poland, the 58-megawatt Stepien solar plant, located in Poland."
     },
     {
-        "URL": "https://www.evwind.es/2025/01/09/photovoltaic-solar-power-capacity-in-ukraine-grows-by-800-850-mw-in-2024-solar-energy-association-head/103709",
-        "description": "In 2024, Ukraine added approximately 800–850 MW of solar power capacity through installations by businesses and households, according to Vladyslav Sokolovsky."
+        "url": "https://www.cleanenergywire.org/news/dispatch-poland-october-24",
+        "description": "The article outlines the updated energy strategy of Poland's new government, indicating more ambitious targets for renewable energy implementation, including solar."
     },
     {
-        "URL": "https://www.solarpowereurope.org/news/war-in-ukraine-three-years-on-solar-supports-ukraine",
-        "description": "Together, we're working to install solar on schools and hospitals in Ukraine, tackling energy outages. To mark the three-year anniversary, the Energy Act for ..."
-    },
-    {
-        "URL": "https://www.dentons.com/en/insights/articles/2024/august/20/ukrainian-government-approves-national-renewable-energy-action-plan",
-        "description": "Ukrainian government approves National Renewable Energy Action Plan, 110 MW RES auction, and contest to construct 700 MW of high maneuverable ..."
-    },
-    {
-        "URL": "https://ukraineinvest.gov.ua/en/industries/energy/renewable-energy/",
-        "description": "From 2018 to 2020, solar energy capacity increased nearly fivefold. As of 2024, solar power plants account for about 75% of “green” energy production in Ukraine ..."
-    },
-    {
-        "URL": "https://en.wikipedia.org/wiki/Solar_power_in_Ukraine",
-        "description": "More distributed solar power in Ukraine is urgently needed to secure electricity in Ukraine, according to the IEA. Dunayskaya solar station in 2013 Solar ..."
-    },
-    {
-        "URL": "https://sppdevelopment.com.ua/spp_69_mw/",
-        "description": "About Project. We are thrilled to have completed a new and unique Solar Power Plant project with a capacity of 54 MW (AC) and 69 MW (DC)."
+        "url": "https://www.aboutamazon.eu/news/sustainability/operations-begin-at-milkowice-solar-farm-amazons-first-renewable-energy-project-in-poland",
+        "description": "Amazon's Miłkowice Solar Farm project is now operational. This is part of four projects in Poland aimed at balancing electricity consumption."
     }
 ]
 ```

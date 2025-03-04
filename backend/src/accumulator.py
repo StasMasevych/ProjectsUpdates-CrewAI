@@ -59,7 +59,6 @@ class ResultsAccumulator:
                     # New fields from tasks.yaml
                     "category": project.get("category", "development"),
                     "date": project.get("date", datetime.now().strftime("%m/%d/%Y")),
-                    "project_status": project.get("status", "Ongoing"),
                     "keyPoints": project.get("KeyPoints", [])  # Use AI-generated KeyPoints directly
                 }
                 standardized_projects.append(standardized_project)

@@ -279,7 +279,6 @@ def normalize_project(project: Dict, country: str) -> Dict:
             # New fields from tasks.yaml
             "category": project.get("category", "development"),
             "date": project.get("Date", datetime.now().strftime("%m/%d/%Y")),
-            "project_status": project.get("CurrentStatus", "Ongoing"),
             "keyPoints": project.get("KeyPoints", [])  # Use AI-generated KeyPoints directly
         }
     return {
@@ -295,7 +294,6 @@ def normalize_project(project: Dict, country: str) -> Dict:
         # New fields from tasks.yaml
         "category": project.get("category", "development"),
         "date": project.get("date", datetime.now().strftime("%m/%d/%Y")),
-        "project_status": project.get("project_status", "Ongoing"),
         "keyPoints": project.get("keyPoints", [])  # Use AI-generated keyPoints directly
     }
 

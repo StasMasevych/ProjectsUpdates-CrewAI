@@ -2,6 +2,7 @@ search_task:
   description: >-
     Search for new {technology} energy projects in {country} from the last 6 months.
     Focus on project sizes, locations, developers, and investment values.
+    Focus on projects that are in the planning stage or have been announced or early development, and are not yet constructed.
     Use SerperDev to find relevant news articles and project announcements.
   expected_output: >-
     A list of URLs and brief descriptions of relevant {country} {technology} project announcements

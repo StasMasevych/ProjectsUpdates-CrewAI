@@ -16,7 +16,6 @@ interface Project {
   status: string;
   category: string;
   date: string;
-  project_status: string;
   keyPoints: string[];
 }
 
@@ -377,12 +376,6 @@ export default function Home() {
                                 bg-green-100 text-green-800"
                               >
                                 Category: {project.category}
-                              </span>
-                              <span
-                                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
-                                bg-purple-100 text-purple-800"
-                              >
-                                Project Status: {project.project_status}
                               </span>
                               <span
                                 className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
