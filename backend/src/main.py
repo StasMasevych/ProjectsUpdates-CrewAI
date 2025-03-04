@@ -215,6 +215,23 @@ def standardize_country_result(result: any, country: str) -> Dict:
         print("\n🔄 Standardizing individual projects")
         for project in projects:
             print(f"\nProcessing project: {project.get('ProjectName') or project.get('name', 'Unknown')}")
+            
+            # Handle key points with more flexibility
+            key_points = []
+            if "KeyPoints" in project and isinstance(project["KeyPoints"], list):
+                key_points = project["KeyPoints"]
+            elif "keyPoints" in project and isinstance(project["keyPoints"], list):
+                key_points = project["keyPoints"]
+            elif "key_points" in project and isinstance(project["key_points"], list):
+                key_points = project["key_points"]
+            
+            # Handle partners with similar flexibility
+            partners = []
+            if "partners" in project and isinstance(project["partners"], list):
+                partners = project["partners"]
+            elif "Partners" in project and isinstance(project["Partners"], list):
+                partners = project["Partners"]
+            
             standardized_project = {
                 "name": project.get("ProjectName") or project.get("name", "Unknown"),
                 "location": project.get("Location") or project.get("location", country),
@@ -224,10 +241,16 @@ def standardize_country_result(result: any, country: str) -> Dict:
                 "timeline": project.get("Timeline") or project.get("timeline", "N/A"),
                 "status": project.get("CurrentStatus") or project.get("status", "N/A"),
                 "source_url": project.get("source_url", ""),
-                "source_name": project.get("source_name", country)
+                "source_name": project.get("source_name", country),
+                "category": project.get("category", "development"),
+                "date": project.get("Date") or project.get("date", datetime.now().strftime("%m/%d/%Y")),
+                "keyPoints": key_points,
+                "partners": partners
             }
             standardized_projects.append(standardized_project)
             print("Standardized project:", json.dumps(standardized_project, indent=2))
+            print(f"Key points: {key_points}")
+            print(f"Partners: {partners}")
 
         print(f"\n✅ Successfully standardized {len(standardized_projects)} projects")
         
@@ -265,6 +288,28 @@ def standardize_country_result(result: any, country: str) -> Dict:
 def normalize_project(project: Dict, country: str) -> Dict:
     """Normalize project data to a consistent format"""
     # Use the structure from tasks.yaml
+    # Check for KeyPoints with capital K as in tasks.yaml
+    key_points = []
+    
+    # Check all possible key point formats
+    if "KeyPoints" in project and isinstance(project["KeyPoints"], list):
+        key_points = project["KeyPoints"]
+    elif "keyPoints" in project and isinstance(project["keyPoints"], list):
+        key_points = project["keyPoints"]
+    elif "key_points" in project and isinstance(project["key_points"], list):
+        key_points = project["key_points"]
+    
+    # Ensure we have a valid list
+    if not isinstance(key_points, list):
+        key_points = []
+    
+    # Check for partners with similar flexibility
+    partners = []
+    if "partners" in project and isinstance(project["partners"], list):
+        partners = project["partners"]
+    elif "Partners" in project and isinstance(project["Partners"], list):
+        partners = project["Partners"]
+    
     if 'ProjectName' in project:
         return {
             "name": project.get("ProjectName", "Unknown"),
@@ -279,7 +324,8 @@ def normalize_project(project: Dict, country: str) -> Dict:
             # New fields from tasks.yaml
             "category": project.get("category", "development"),
             "date": project.get("Date", datetime.now().strftime("%m/%d/%Y")),
-            "keyPoints": project.get("KeyPoints", [])  # Use AI-generated KeyPoints directly
+            "keyPoints": key_points,  # Use consistent lowercase keyPoints for frontend
+            "partners": partners  # Add the new partners field
         }
     return {
         "name": project.get("name", "Unknown"),
@@ -294,7 +340,8 @@ def normalize_project(project: Dict, country: str) -> Dict:
         # New fields from tasks.yaml
         "category": project.get("category", "development"),
         "date": project.get("date", datetime.now().strftime("%m/%d/%Y")),
-        "keyPoints": project.get("keyPoints", [])  # Use AI-generated keyPoints directly
+        "keyPoints": key_points,  # Use consistent lowercase keyPoints for frontend
+        "partners": partners  # Add the new partners field
     }
 
 @app.get("/api/progress")

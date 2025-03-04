@@ -2,7 +2,7 @@ search_task:
   description: >-
     Search for new {technology} energy projects in {country} from the last 6 months.
     Focus on project sizes, locations, developers, and investment values.
-    Focus on projects that are in the planning stage or have been announced or early development, and are not yet constructed.
+    Focus on all new projects that are not yet constructed.
     Use SerperDev to find relevant news articles and project announcements.
   expected_output: >-
     A list of URLs and brief descriptions of relevant {country} {technology} project announcements
@@ -46,13 +46,14 @@ analysis_task:
           "category": "<string: development | investment | planning>",
           "Date": "<string: MM/DD/YYYY>",
           "KeyPoints": [
-            "<string point 1>",
-            "<string point 2>",
-            "<string point 3>",
-            "<string point 4>",
-            "<string point 5>",
-            "<string point 6>"
-          ]
+            "<string: point highlighting technical opportunity>",
+            "<string: point highlighting procurement opportunity>",
+            "<string: point highlighting timeline consideration>",
+            "<string: point highlighting competitive advantage potential>",
+            "<string: point highlighting regulatory consideration>",
+            "<string: point highlighting financial consideration>"
+          ],
+          "partners": ["<string: Partner 1>", "<string: Partner 2>"]
         }}
       ]
     }}

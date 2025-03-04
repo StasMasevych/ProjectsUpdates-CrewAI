@@ -46,6 +46,34 @@ class ResultsAccumulator:
             # Standardize and store projects
             standardized_projects = []
             for project in projects:
+                # Debug the project structure
+                print(f"Processing project: {project.get('ProjectName', project.get('name', 'Unknown'))}")
+                print(f"Project keys: {list(project.keys())}")
+                
+                # Check for KeyPoints with capital K as in tasks.yaml and analysis_results.json
+                key_points = []
+                if "KeyPoints" in project and isinstance(project["KeyPoints"], list):
+                    print(f"Found KeyPoints (capital K): {project['KeyPoints']}")
+                    key_points = project["KeyPoints"]
+                elif "keyPoints" in project and isinstance(project["keyPoints"], list):
+                    print(f"Found keyPoints (lowercase k): {project['keyPoints']}")
+                    key_points = project["keyPoints"]
+                else:
+                    # Also check for key_points in the original format from analysis_results.json
+                    print("No KeyPoints or keyPoints found directly in project, checking for key_points")
+                    if "key_points" in project and isinstance(project["key_points"], list):
+                        print(f"Found key_points (with underscore): {project['key_points']}")
+                        key_points = project["key_points"]
+                
+                # Ensure we have a valid list of key points
+                if not isinstance(key_points, list):
+                    key_points = []
+                
+                # Check for partners field
+                partners = []
+                if "partners" in project and isinstance(project["partners"], list):
+                    partners = project["partners"]
+                
                 standardized_project = {
                     "name": project.get("ProjectName", project.get("name", "Unknown")),
                     "location": project.get("Location", project.get("location", country)),
@@ -58,10 +86,15 @@ class ResultsAccumulator:
                     "source_name": project.get("source_name", country),
                     # New fields from tasks.yaml
                     "category": project.get("category", "development"),
-                    "date": project.get("date", datetime.now().strftime("%m/%d/%Y")),
-                    "keyPoints": project.get("KeyPoints", [])  # Use AI-generated KeyPoints directly
+                    "date": project.get("Date", project.get("date", datetime.now().strftime("%m/%d/%Y"))),
+                    "keyPoints": key_points,  # Use consistent lowercase keyPoints for frontend
+                    "partners": partners  # Add the partners field
                 }
                 standardized_projects.append(standardized_project)
+                
+                # Debug the standardized project
+                print(f"Standardized project keyPoints: {standardized_project['keyPoints']}")
+                print(f"Standardized project partners: {standardized_project['partners']}")
 
             # Store standardized projects for this country
             self.accumulated_analysis["projects_by_country"][country] = standardized_projects

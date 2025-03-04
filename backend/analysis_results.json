@@ -1,113 +1,202 @@
 ```json
 {
   "Summary": {
-    "Major developers active in the market": ["Greenvolt Power", "BYD Energy Storage", "Equinor", "Amazon"],
+    "Major developers active in the market": ["Tauron Polska Energia", "ZE PAK", "PAD RES", "NeoInvestments", "Doral", "TotalEnergies", "R Power"],
     "Most promising projects": [
-      "Greenvolt - BYD Energy Storage Projects - This project aims to develop battery energy storage of up to 1.6 GWh, which is crucial for enhancing grid stability and integrating renewable energy sources. Foreign EPCs/investors should consider this for its innovative approach and potential for scalability.",
-      "Miłkowice Solar Farm - With a capacity of 140 MW, this operational project by Amazon is part of a larger strategy to balance electricity consumption. Its successful implementation showcases Amazon's commitment to renewable energy, making it an attractive opportunity for foreign investors.",
-      "Planned Solar Projects - Encompassing 19 GW of new solar projects in the planning stage, this initiative represents a significant growth opportunity in Poland's solar market. Foreign investors can benefit from the anticipated demand for solar energy as Poland ramps up its renewable energy targets."
+      "NeoInvestments Solar PV Park - With a capacity of 600 MW, this project is in the permitting stage and represents a significant investment opportunity for foreign EPCs looking to enter the Polish market.",
+      "Doral Poland Solar Power Project - This project has a substantial capacity of 430.5 MW and is under construction, making it a key player in Poland's solar landscape.",
+      "Pomeranian Solar Park - Planned for 117 MW capacity, this project is set to commence construction in 2025, indicating strong future growth potential."
     ]
   },
   "Detailed Project List": [
     {
-      "ProjectName": "Greenvolt - BYD Energy Storage Projects",
-      "Location": "Poland",
-      "Capacity_MW": 400,
-      "Developer": "Greenvolt Power and BYD Energy Storage",
-      "Timeline": "Construction expected to be completed by Q1 2026",
-      "CurrentStatus": "Under construction",
-      "source_url": "https://ceenergynews.com/renewables/greenvolt-byd-energy-storage-poland/",
-      "source_name": "CE Energy News",
+      "ProjectName": "Witnica Solar Park",
+      "Location": "Witnica",
+      "Capacity_MW": 64,
+      "Developer": "Not Specified",
+      "Timeline": "Construction started in 2022, completion estimated in 2024",
+      "CurrentStatus": "Under Construction",
+      "source_url": "https://www.pvknowhow.com/solar-report/poland/",
+      "source_name": "PV Know How",
       "category": "development",
-      "Date": "10/01/2023",
+      "Date": "09/30/2023",
       "KeyPoints": [
-        "Developing battery energy storage of up to 1.6 GWh",
-        "Enhances grid stability",
-        "Integrates renewable energy sources",
-        "Innovative approach",
-        "Potential for scalability",
-        "Collaboration with BYD Energy Storage"
-      ]
+        "Utilizes advanced solar technology for efficiency",
+        "Potential for local procurement partnerships",
+        "Timeline aligns with increasing demand for renewable energy",
+        "Strategic location for grid connectivity",
+        "Favorable regulatory environment for solar projects",
+        "Attractive financial incentives for renewable energy investments"
+      ],
+      "partners": []
     },
     {
-      "ProjectName": "Stepien Solar Plant",
-      "Location": "Braniewo municipality, Warmia region",
-      "Capacity_MW": 58,
-      "Developer": "Equinor",
-      "Timeline": "Operational since October 2022",
+      "ProjectName": "Tauron Solar Farm",
+      "Location": "Postomino",
+      "Capacity_MW": 100,
+      "Developer": "Tauron Polska Energia",
+      "Timeline": "Not Specified",
+      "CurrentStatus": "Under Construction",
+      "source_url": "https://ieo.pl/en/pv-projects",
+      "source_name": "Institute for Renewable Energy",
+      "category": "development",
+      "Date": "09/30/2023",
+      "KeyPoints": [
+        "Large scale project with significant capacity",
+        "Opportunities for local supply chain engagement",
+        "Construction aligns with national energy goals",
+        "Potential for grid stability improvements",
+        "Regulatory support for large-scale solar projects",
+        "Strong financial backing from a major developer"
+      ],
+      "partners": []
+    },
+    {
+      "ProjectName": "ZE PAK Solar Power Plant",
+      "Location": "Adamów brown coal mine, Turek",
+      "Capacity_MW": 70,
+      "Developer": "ZE PAK",
+      "Timeline": "Not Specified",
       "CurrentStatus": "Operational",
-      "source_url": "https://www.aa.com.tr/en/energy/general/equinor-s-first-solar-plant-in-poland-ready-for-operation/36533",
-      "source_name": "AA News",
+      "source_url": "https://emerging-europe.com/analysis/investors-are-increasingly-ready-to-back-polands-solar-revolution/",
+      "source_name": "Emerging Europe",
       "category": "investment",
-      "Date": "10/01/2022",
+      "Date": "09/30/2023",
       "KeyPoints": [
-        "First solar plant by Equinor in Poland",
-        "Operational since October 2022",
-        "Contributes to local energy supply",
-        "Demonstrates Equinor's commitment to renewables",
-        "Supports Poland's energy transition",
-        "Enhances local job creation"
-      ]
+        "Repurposing of brown coal mine site for solar energy",
+        "Demonstrates innovative use of existing infrastructure",
+        "Operational status provides immediate energy output",
+        "Potential for expansion and additional capacity",
+        "Regulatory incentives for renewable energy projects",
+        "Strong community support for renewable initiatives"
+      ],
+      "partners": []
     },
     {
-      "ProjectName": "Miłkowice Solar Farm",
-      "Location": "Miłkowice, Poland",
-      "Capacity_MW": 140,
-      "Developer": "Amazon",
-      "Timeline": "Operational since February 2025",
-      "CurrentStatus": "Operational",
-      "source_url": "https://www.aboutamazon.eu/news/sustainability/operations-begin-at-milkowice-solar-farm-amazons-first-renewable-energy-project-in-poland",
-      "source_name": "Amazon News",
-      "category": "investment",
-      "Date": "02/01/2025",
-      "KeyPoints": [
-        "Part of Amazon's renewable energy strategy",
-        "Operational since February 2025",
-        "Aims to balance electricity consumption",
-        "Showcases Amazon's commitment to sustainability",
-        "Supports local energy needs",
-        "Potential for future expansions"
-      ]
-    },
-    {
-      "ProjectName": "Solar and Wind Projects",
-      "Location": "Poland",
-      "Capacity_MW": 140,
-      "Developer": "Amazon",
-      "Timeline": "Projects initiated and operational",
-      "CurrentStatus": "Operational",
-      "source_url": "https://www.aboutamazon.eu/news/sustainability/operations-begin-at-milkowice-solar-farm-amazons-first-renewable-energy-project-in-poland",
-      "source_name": "Amazon News",
-      "category": "investment",
-      "Date": "02/01/2025",
-      "KeyPoints": [
-        "Combination of solar and wind energy projects",
-        "Supports local energy supply",
-        "Demonstrates Amazon's investment in renewables",
-        "Operational and contributing to the grid",
-        "Potential for further renewable projects",
-        "Enhances energy diversity in Poland"
-      ]
-    },
-    {
-      "ProjectName": "Planned Solar Projects",
-      "Location": "Poland",
-      "Capacity_MW": 19000,
-      "Developer": "Various",
-      "Timeline": "Planning stage",
-      "CurrentStatus": "In planning for future implementations",
-      "source_url": "https://xpert.digital/en/new-solar-projects-in-poland/",
-      "source_name": "Xpert Digital",
+      "ProjectName": "Pomeranian Solar Park",
+      "Location": "Pomeranian Voivodeship",
+      "Capacity_MW": 117,
+      "Developer": "PAD RES",
+      "Timeline": "Construction expected to start in 2025, completion estimated in 2026",
+      "CurrentStatus": "Planned",
+      "source_url": "https://www.dentons.com/en/insights/newsletters/2025/february/24/powered-by-dentons/powered-by-dentons-february-2025/how-the-planned-extension-of-the-deadline-for-adoption-of-general-plans-will-affect-res-projects",
+      "source_name": "Dentons",
       "category": "planning",
-      "Date": "10/01/2023",
+      "Date": "09/30/2023",
       "KeyPoints": [
-        "19 GW of new solar projects planned",
-        "Significant growth opportunity",
-        "Aligns with Poland's renewable energy targets",
-        "Attracts foreign investment",
-        "Potential for job creation",
-        "Supports energy transition in Poland"
-      ]
+        "Strategically located for optimal solar exposure",
+        "Future construction aligns with increasing energy demands",
+        "Potential for collaboration with local governments",
+        "Regulatory framework supports renewable energy growth",
+        "Financial incentives available for new projects",
+        "Opportunity for innovative technology integration"
+      ],
+      "partners": []
+    },
+    {
+      "ProjectName": "NeoInvestments Solar PV Park",
+      "Location": "Greater Poland",
+      "Capacity_MW": 600,
+      "Developer": "NeoInvestments",
+      "Timeline": "Permitting stage, completion estimated in 2026",
+      "CurrentStatus": "Permitting Stage",
+      "source_url": "https://www.pvknowhow.com/solar-report/poland/",
+      "source_name": "PV Know How",
+      "category": "development",
+      "Date": "09/30/2023",
+      "KeyPoints": [
+        "Large capacity project with significant investment potential",
+        "Permitting stage indicates strong future prospects",
+        "Alignment with national renewable energy targets",
+        "Potential for innovative financing models",
+        "Strong local and international interest",
+        "Regulatory support for large-scale solar developments"
+      ],
+      "partners": []
+    },
+    {
+      "ProjectName": "Doral Poland Solar Power Project",
+      "Location": "Not Specified",
+      "Capacity_MW": 430.5,
+      "Developer": "Doral",
+      "Timeline": "Not Specified, completion estimated in 2024",
+      "CurrentStatus": "Under Construction",
+      "source_url": "https://www.pvknowhow.com/solar-report/poland/",
+      "source_name": "PV Know How",
+      "category": "development",
+      "Date": "09/30/2023",
+      "KeyPoints": [
+        "Significant capacity under construction",
+        "Potential for rapid energy output upon completion",
+        "Strong backing from a reputable developer",
+        "Regulatory incentives for renewable energy projects",
+        "Opportunity for local job creation during construction",
+        "Strategic location for energy distribution"
+      ],
+      "partners": []
+    },
+    {
+      "ProjectName": "TotalEnergies’ Acquisition Solar Project",
+      "Location": "Northern and Western Poland",
+      "Capacity_MW": 200,
+      "Developer": "TotalEnergies",
+      "Timeline": "Not Specified, completion estimated in 2025",
+      "CurrentStatus": "Under Development",
+      "source_url": "https://www.pvknowhow.com/solar-report/poland/",
+      "source_name": "PV Know How",
+      "category": "development",
+      "Date": "09/30/2023",
+      "KeyPoints": [
+        "Major international player involved in the project",
+        "Potential for significant energy output",
+        "Alignment with corporate sustainability goals",
+        "Regulatory support for foreign investments",
+        "Opportunity for technology transfer and innovation",
+        "Strong market presence in renewable energy sector"
+      ],
+      "partners": []
+    },
+    {
+      "ProjectName": "R Power Poland Solar PV Park",
+      "Location": "Not Specified",
+      "Capacity_MW": 400,
+      "Developer": "R Power",
+      "Timeline": "Not Specified, completion estimated in 2025",
+      "CurrentStatus": "Under Construction",
+      "source_url": "https://www.pvknowhow.com/solar-report/poland/",
+      "source_name": "PV Know How",
+      "category": "development",
+      "Date": "09/30/2023",
+      "KeyPoints": [
+        "Large scale project with significant capacity",
+        "Under construction, indicating immediate energy potential",
+        "Strong developer reputation in the market",
+        "Regulatory incentives for renewable energy projects",
+        "Potential for local economic benefits",
+        "Strategic location for energy distribution"
+      ],
+      "partners": []
+    },
+    {
+      "ProjectName": "Gaworzyce Solar PV Project",
+      "Location": "Not Specified",
+      "Capacity_MW": 380,
+      "Developer": "Not Specified",
+      "Timeline": "Not Specified, completion estimated in 2026",
+      "CurrentStatus": "Announced",
+      "source_url": "https://www.pvknowhow.com/solar-report/poland/",
+      "source_name": "PV Know How",
+      "category": "planning",
+      "Date": "09/30/2023",
+      "KeyPoints": [
+        "Announced project with significant capacity",
+        "Potential for future development and investment",
+        "Regulatory framework supports renewable energy growth",
+        "Opportunity for innovative technology integration",
+        "Strong market interest in solar energy",
+        "Potential for collaboration with local stakeholders"
+      ],
+      "partners": []
     }
   ]
 }

@@ -17,6 +17,7 @@ interface Project {
   category: string;
   date: string;
   keyPoints: string[];
+  partners: string[];
 }
 
 interface AnalysisSummary {
@@ -405,6 +406,26 @@ export default function Home() {
                                 )}
                               </div>
                             </div>
+
+                            {/* Partners */}
+                            {project.partners &&
+                              project.partners.length > 0 && (
+                                <div className="mt-3 pt-3 border-t border-gray-100">
+                                  <h6 className="font-medium text-sm mb-2">
+                                    Partners:
+                                  </h6>
+                                  <div className="flex flex-wrap gap-2">
+                                    {project.partners.map((partner, idx) => (
+                                      <span
+                                        key={idx}
+                                        className="px-2 py-1 bg-purple-100 text-purple-800 rounded-full text-xs"
+                                      >
+                                        {partner}
+                                      </span>
+                                    ))}
+                                  </div>
+                                </div>
+                              )}
                           </div>
                         </div>
                       ))}
