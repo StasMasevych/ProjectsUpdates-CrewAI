@@ -179,4 +179,13 @@ class EnergyProjectsCrew:
             
         except Exception as e:
             print(f"❌ Error creating crew: {str(e)}")
-            raise 
+            raise
+
+    def search_task(self, context):
+        # ... existing code ...
+        
+        # Make sure to return the search results in a structured format
+        return {
+            "search_results": search_results,
+            "message": f"Found {len(search_results)} search results for {self.country}"
+        } 

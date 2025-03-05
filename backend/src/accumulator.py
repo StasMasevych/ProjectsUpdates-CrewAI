@@ -13,12 +13,9 @@ class ResultsAccumulator:
         self.accumulated_analysis = {
             "timestamp": datetime.now().isoformat(),
             "summary": {
-                "total_mw": 0.0,
-                "total_investment": 0.0,
                 "countries_analyzed": [],
                 "major_developers": set(),
-                "project_locations": [],
-                "key_trends": "Analysis of projects across multiple countries shows varying stages of development."
+                "most_promising_projects": [],
             },
             "projects_by_country": {}
         }

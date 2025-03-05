@@ -1,6 +1,6 @@
 REGION_MAPPING = {
     "USA": ["United States"],
-    "EU": ["Bulgaria", "Poland"]  # Can easily add more countries later
+    "EU": [ "Ireland", "Romania"]  # Can easily add more countries later
 }
 
 def get_countries_for_region(region: str) -> list[str]:

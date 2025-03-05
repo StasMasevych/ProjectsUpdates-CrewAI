@@ -71,11 +71,9 @@ async def process_region(region: str, technology: str) -> Dict:
         "analysis": {
             "timestamp": datetime.now().isoformat(),
             "summary": {
-                "total_mw": final_results["analysis"]["summary"]["total_mw"],
-                "total_investment": final_results["analysis"]["summary"]["total_investment"],
                 "countries_analyzed": final_results["analysis"]["summary"]["countries_analyzed"],
                 "major_developers": list(final_results["analysis"]["summary"]["major_developers"]),
-                "project_locations": final_results["analysis"]["summary"]["project_locations"]
+                "most_promising_projects": final_results["analysis"]["summary"].get("most_promising_projects", [])
             },
             "projects_by_country": final_results["analysis"]["projects_by_country"]
         }
@@ -265,13 +263,8 @@ def standardize_country_result(result: any, country: str) -> Dict:
             "search_results": [],  # Will be populated by the accumulator
             "analysis": {
                 "Summary": {
-                    "Total MW of new projects": sum(float(p["capacity"].split()[0]) 
-                                                  for p in standardized_projects 
-                                                  if p["capacity"] != "N/A" and p["capacity"].split()[0].replace('.','',1).isdigit()),
-                    "Total investment value": "0",  # Will be calculated in accumulator
-                    "Key trends in project locations": list(set(p["location"] for p in standardized_projects)),
                     "Major developers active in the market": list(set(p["developer"] for p in standardized_projects if p["developer"] != "Unknown")),
-                    "Project development timelines": list(set(p["timeline"] for p in standardized_projects if p["timeline"] != "N/A"))
+                    "Most promising projects": []  # Add this field to match tasks.yaml
                 },
                 "Detailed Project List": standardized_projects
             }

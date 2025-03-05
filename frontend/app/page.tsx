@@ -20,13 +20,11 @@ interface Project {
   partners: string[];
 }
 
+// Simplified interface with only required fields
 interface AnalysisSummary {
-  total_mw: number;
-  total_investment: number;
   countries_analyzed: string[];
   major_developers: string[];
-  project_locations: string[];
-  key_trends: string;
+  most_promising_projects: string[];
 }
 
 interface AccumulatedAnalysis {
@@ -238,46 +236,38 @@ export default function Home() {
           <section className="bg-white p-6 rounded-lg shadow">
             <h2 className="text-2xl font-semibold mb-4">Analysis Results</h2>
 
-            {/* Overall Summary */}
+            {/* Overall Summary - Simplified */}
             <div className="mb-8">
               <h3 className="text-xl font-semibold mb-4">Overall Summary</h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 p-4 bg-gray-50 rounded-lg">
-                <div>
-                  <p className="font-medium">Total MW:</p>
-                  <p className="text-xl">
-                    {result.analysis.summary.total_mw.toFixed(1)} MW
-                  </p>
-                </div>
-                <div>
-                  <p className="font-medium">Total Investment:</p>
-                  <p className="text-xl">
-                    €{result.analysis.summary.total_investment}M
-                  </p>
-                </div>
+              <div className="p-4 bg-gray-50 rounded-lg">
                 <div>
                   <p className="font-medium">Countries Analyzed:</p>
                   <p className="text-xl">
-                    {result.analysis.summary.countries_analyzed.length}
+                    {result.analysis.summary.countries_analyzed.length > 0
+                      ? result.analysis.summary.countries_analyzed.join(", ")
+                      : "No countries analyzed"}
                   </p>
                 </div>
               </div>
 
-              {/* Major Developers */}
-              <div className="mt-4">
-                <h4 className="font-medium mb-2">Major Developers:</h4>
-                <div className="flex flex-wrap gap-2">
-                  {result.analysis.summary.major_developers.map(
-                    (developer, index) => (
-                      <span
-                        key={index}
-                        className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm"
-                      >
-                        {developer}
-                      </span>
-                    )
-                  )}
-                </div>
-              </div>
+              {/* Most Promising Projects */}
+              {result.analysis.summary.most_promising_projects &&
+                result.analysis.summary.most_promising_projects.length > 0 && (
+                  <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+                    <h4 className="font-medium mb-2">
+                      Most Promising Projects:
+                    </h4>
+                    <ul className="list-disc pl-5 space-y-2">
+                      {result.analysis.summary.most_promising_projects.map(
+                        (project, index) => (
+                          <li key={index} className="text-gray-800">
+                            {project}
+                          </li>
+                        )
+                      )}
+                    </ul>
+                  </div>
+                )}
             </div>
 
             {/* Projects by Country */}
