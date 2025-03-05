@@ -250,6 +250,26 @@ export default function Home() {
                 </div>
               </div>
 
+              {/* Major Developers */}
+              {result.analysis.summary.major_developers &&
+                result.analysis.summary.major_developers.length > 0 && (
+                  <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+                    <h4 className="font-medium mb-2">Major Developers:</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {result.analysis.summary.major_developers.map(
+                        (developer, index) => (
+                          <span
+                            key={index}
+                            className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm"
+                          >
+                            {developer}
+                          </span>
+                        )
+                      )}
+                    </div>
+                  </div>
+                )}
+
               {/* Most Promising Projects */}
               {result.analysis.summary.most_promising_projects &&
                 result.analysis.summary.most_promising_projects.length > 0 && (

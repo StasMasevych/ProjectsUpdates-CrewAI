@@ -5,7 +5,9 @@ from datetime import datetime
 
 class ResultsAccumulator:
     def __init__(self):
+        # Use absolute() instead of resolve() to get absolute path
         self.output_dir = Path(__file__).parent.parent / 'output'
+        self.output_dir = self.output_dir.absolute()  # Get absolute path without resolving symlinks
         self.output_dir.mkdir(exist_ok=True)
         
         # Initialize accumulator storage with the correct structure
@@ -40,6 +42,41 @@ class ResultsAccumulator:
             elif "raw_result" in analysis_results and "projects" in analysis_results["raw_result"]:
                 projects = analysis_results["raw_result"]["projects"]
 
+            # Extract most promising projects from Summary if available
+            if "Summary" in analysis_results:
+                summary = analysis_results["Summary"]
+                
+                # Extract major developers
+                if "Major developers active in the market" in summary:
+                    developers = summary["Major developers active in the market"]
+                    if isinstance(developers, list):
+                        for dev in developers:
+                            self.accumulated_analysis["summary"]["major_developers"].add(dev)
+                
+                # Extract most promising projects - directly use the AI's reasoning
+                if "Most promising projects" in summary:
+                    promising_projects = summary["Most promising projects"]
+                    print(f"\n🌟 Found promising projects for {country}: {promising_projects}")
+                    
+                    if isinstance(promising_projects, list) and promising_projects:
+                        # Add country prefix to each project if not already included
+                        country_projects = []
+                        for project in promising_projects:
+                            if isinstance(project, str):
+                                if not project.startswith(f"{country}:"):
+                                    country_projects.append(f"{country}: {project}")
+                                else:
+                                    country_projects.append(project)
+                        
+                        if country_projects:
+                            self.accumulated_analysis["summary"]["most_promising_projects"].extend(country_projects)
+                            print(f"✅ Added {len(country_projects)} promising projects from {country}")
+                            print(f"Current most_promising_projects: {self.accumulated_analysis['summary']['most_promising_projects']}")
+                        else:
+                            print(f"⚠️ No valid promising projects found for {country}")
+                    else:
+                        print(f"⚠️ No promising projects list found for {country} or invalid format")
+
             # Generate today's date in MM/DD/YYYY format - use this for ALL projects
             today_date = datetime.now().strftime("%m/%d/%Y")
             print(f"Using today's date for all projects: {today_date}")
@@ -49,21 +86,16 @@ class ResultsAccumulator:
             for project in projects:
                 # Debug the project structure
                 print(f"Processing project: {project.get('ProjectName', project.get('name', 'Unknown'))}")
-                print(f"Project keys: {list(project.keys())}")
                 
                 # Check for KeyPoints with capital K as in tasks.yaml and analysis_results.json
                 key_points = []
                 if "KeyPoints" in project and isinstance(project["KeyPoints"], list):
-                    print(f"Found KeyPoints (capital K): {project['KeyPoints']}")
                     key_points = project["KeyPoints"]
                 elif "keyPoints" in project and isinstance(project["keyPoints"], list):
-                    print(f"Found keyPoints (lowercase k): {project['keyPoints']}")
                     key_points = project["keyPoints"]
                 else:
                     # Also check for key_points in the original format from analysis_results.json
-                    print("No KeyPoints or keyPoints found directly in project, checking for key_points")
                     if "key_points" in project and isinstance(project["key_points"], list):
-                        print(f"Found key_points (with underscore): {project['key_points']}")
                         key_points = project["key_points"]
                 
                 # Ensure we have a valid list of key points
@@ -73,10 +105,8 @@ class ResultsAccumulator:
                 # Check for partners field with more flexibility
                 partners = []
                 if "partners" in project and isinstance(project["partners"], list):
-                    print(f"Found partners (lowercase p): {project['partners']}")
                     partners = project["partners"]
                 elif "Partners" in project and isinstance(project["Partners"], list):
-                    print(f"Found Partners (capital P): {project['Partners']}")
                     partners = project["Partners"]
                 
                 standardized_project = {
@@ -96,41 +126,15 @@ class ResultsAccumulator:
                     "partners": partners  # Add the partners field
                 }
                 standardized_projects.append(standardized_project)
-                
-                # Debug the standardized project
-                print(f"Standardized project keyPoints: {standardized_project['keyPoints']}")
-                print(f"Standardized project partners: {standardized_project['partners']}")
-                print(f"Standardized project date: {standardized_project['date']}")
 
             # Store standardized projects for this country
             self.accumulated_analysis["projects_by_country"][country] = standardized_projects
 
             # Update summary metrics
             for project in standardized_projects:
-                # Update total MW
-                try:
-                    mw = float(project["capacity"].split()[0])
-                    self.accumulated_analysis["summary"]["total_mw"] += mw
-                except (ValueError, IndexError):
-                    pass
-
-                # Update project locations
-                if project["location"] not in self.accumulated_analysis["summary"]["project_locations"]:
-                    self.accumulated_analysis["summary"]["project_locations"].append(project["location"])
-
                 # Update major developers
                 if project["developer"] != "Unknown":
                     self.accumulated_analysis["summary"]["major_developers"].add(project["developer"])
-
-            # Extract key trends if available
-            if "Summary" in analysis_results and "key_trends" in analysis_results["Summary"]:
-                country_key_trends = analysis_results["Summary"]["key_trends"]
-                # Append country-specific trends to the overall key_trends
-                current_trends = self.accumulated_analysis["summary"]["key_trends"]
-                if current_trends == "Analysis of projects across multiple countries shows varying stages of development.":
-                    self.accumulated_analysis["summary"]["key_trends"] = f"{country}: {country_key_trends}"
-                else:
-                    self.accumulated_analysis["summary"]["key_trends"] += f"\n\n{country}: {country_key_trends}"
 
     def get_results(self) -> Dict:
         """Get the current accumulated results"""
@@ -152,7 +156,7 @@ class ResultsAccumulator:
         with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(results, f, ensure_ascii=False, indent=2)
         
-        # Also save search results to output directory
+        # Also save accumulated search results to output directory
         search_output_path = self.output_dir / 'search_results.json'
         with open(search_output_path, 'w', encoding='utf-8') as f:
             json.dump(self.accumulated_search_results, f, ensure_ascii=False, indent=2) 

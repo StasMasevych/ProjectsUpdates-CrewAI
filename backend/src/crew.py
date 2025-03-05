@@ -114,11 +114,12 @@ class EnergyProjectsCrew:
                 2. Ensure all URLs are complete and working (starting with https://)""",
                 llm=ChatOpenAI(
                     model="gpt-4o-mini",
+                    #model="gpt-3.5-turbo",
                     temperature=0
                 ),
                 verbose=True
             )
-            print("✅ Created analyst with GPT-4")
+            print("✅ Created analyst with GPT")
 
             return [researcher, scraper, analyst]
             
@@ -131,14 +132,39 @@ class EnergyProjectsCrew:
         try:
             print("\n📋 Creating tasks")
             
-            # Create tasks without the extra commas that were creating tuples
+            # Create output directory if it doesn't exist
+            # Use absolute path with parent.parent to ensure we're in the right location
+            output_dir = Path(__file__).parent.parent / 'output'
+            output_dir = output_dir.absolute()  # Get absolute path without resolving symlinks
+            output_dir.mkdir(exist_ok=True)
+            
+            # Use country-specific filenames in the output directory
+            search_output = output_dir / f'search_results_{self.country}.json'
+            analysis_output = output_dir / f'analysis_results_{self.country}.json'
+            
+            print(f"📂 Output directory: {output_dir}")
+            print(f"📄 Search output path: {search_output}")
+            print(f"📄 Analysis output path: {analysis_output}")
+            
+            # Create tasks with proper output paths
             search_task = Task(
-                description=self.tasks_config['search_task']['description'],
+                description=self.tasks_config['search_task']['description'] + """
+                
+                Your output MUST be a valid JSON array of objects with this structure:
+                [
+                    {
+                        "title": "Title of the article or announcement",
+                        "url": "https://full-url-to-the-source",
+                        "description": "Brief description of the project or announcement"
+                    },
+                    ...
+                ]
+                """,
                 agent=agents[0],
                 expected_output=self.tasks_config['search_task']['expected_output'],
-                output_file='search_results.json'
+                output_file=str(search_output)
             )
-            print("✅ Created task for web_researcher")
+            print(f"✅ Created task for web_researcher with output: {search_output}")
 
             scrape_task = Task(
                 description=self.tasks_config['scraping_task']['description'],
@@ -151,9 +177,9 @@ class EnergyProjectsCrew:
                 description=self.tasks_config['analysis_task']['description'],
                 agent=agents[2],
                 expected_output=self.tasks_config['analysis_task']['expected_output'],
-                output_file='analysis_results.json'
+                output_file=str(analysis_output)
             )
-            print("✅ Created task for data_analyst")
+            print(f"✅ Created task for data_analyst with output: {analysis_output}")
 
             return [search_task, scrape_task, analysis_task]
             

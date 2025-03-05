@@ -1,0 +1,186 @@
+{
+  "Summary": {
+    "Major developers active in the market": [
+      "HEP (Hrvatska Elektroprivreda)",
+      "Hive Energy",
+      "Enlight Renewable Energy",
+      "RP Global Austria",
+      "Solvis"
+    ],
+    "Most promising projects": [
+      "SE Korlat - This project is the largest solar power plant in Croatia, covering 100,000 homes, making it a significant investment opportunity for foreign engineering companies due to its scale and potential impact on the local energy market.",
+      "ERE Croatia Solar PV Park - With a capacity of 386 MW and currently in the permitting stage, this project represents a substantial future contribution to Croatia's solar capacity, attracting investors looking for large-scale renewable energy projects.",
+      "99 MW Project - Scheduled to be operational by 2026, this project offers a promising return on investment due to its significant capacity and the growing demand for renewable energy in Croatia."
+    ]
+  },
+  "Detailed Project List": [
+    {
+      "ProjectName": "SE Korlat",
+      "Location": "Benkovac, Zadar County",
+      "Capacity_MW": 75,
+      "Developer": "HEP (Hrvatska Elektroprivreda)",
+      "Timeline": "2024 - 2025",
+      "CurrentStatus": "Under development",
+      "source_url": "https://total-croatia-news.com/news/croatian-solar-power-plant-2/",
+      "source_name": "Total Croatia News",
+      "category": "development",
+      "Date": "02/09/2024",
+      "KeyPoints": [
+        "Largest solar power plant in Croatia.",
+        "Investment of 70 million euros.",
+        "Expected to cover 100,000 homes.",
+        "Significant annual production of 165 MWh.",
+        "Strong government support for renewable energy.",
+        "High potential for return on investment."
+      ],
+      "partners": []
+    },
+    {
+      "ProjectName": "Agri-PV Project",
+      "Location": "Sisak-Moslavina County",
+      "Capacity_MW": 6,
+      "Developer": "Hive Energy",
+      "Timeline": "TBD",
+      "CurrentStatus": "Secured land",
+      "source_url": "https://www.hiveenergy.co.uk/2024/02/09/we-have-secured-land-on-three-solar-projects-in-croatia/",
+      "source_name": "Hive Energy",
+      "category": "development",
+      "Date": "02/09/2024",
+      "KeyPoints": [
+        "Innovative Agri-PV technology.",
+        "Potential for dual land use.",
+        "Supports local agriculture.",
+        "Low competition in the Agri-PV sector.",
+        "Regulatory incentives for green projects.",
+        "Opportunity for sustainable investment."
+      ],
+      "partners": []
+    },
+    {
+      "ProjectName": "50 MW Solar Project",
+      "Location": "Sisak-Moslavina County",
+      "Capacity_MW": 50,
+      "Developer": "Hive Energy",
+      "Timeline": "TBD",
+      "CurrentStatus": "Secured land",
+      "source_url": "https://www.hiveenergy.co.uk/2024/02/09/we-have-secured-land-on-three-solar-projects-in-croatia/",
+      "source_name": "Hive Energy",
+      "category": "development",
+      "Date": "02/09/2024",
+      "KeyPoints": [
+        "Significant capacity for a single project.",
+        "Strategically located in a renewable energy-friendly region.",
+        "Potential for quick development.",
+        "Strong local support for renewable initiatives.",
+        "Competitive advantage in the local market.",
+        "Attractive for foreign investors."
+      ],
+      "partners": []
+    },
+    {
+      "ProjectName": "99 MW Project",
+      "Location": "Bjelovar-Bilogora County",
+      "Capacity_MW": 99,
+      "Developer": "Hive Energy",
+      "Timeline": "Expected to be operational by 2026",
+      "CurrentStatus": "Expected to be operational by 2026",
+      "source_url": "https://www.pv-magazine.com/2025/02/03/croatias-new-solar-additions-hit-397-1-mw-in-2024/",
+      "source_name": "PV Magazine",
+      "category": "development",
+      "Date": "02/03/2025",
+      "KeyPoints": [
+        "Large capacity project with significant output.",
+        "Part of Croatia's growing solar capacity.",
+        "Strong market demand for renewable energy.",
+        "Potential for partnerships with local firms.",
+        "Regulatory support for renewable energy projects.",
+        "Attractive for long-term investment."
+      ],
+      "partners": []
+    },
+    {
+      "ProjectName": "ERE Croatia Solar PV Park",
+      "Location": "TBD",
+      "Capacity_MW": 386,
+      "Developer": "Enlight Renewable Energy",
+      "Timeline": "Expected completion by 2026",
+      "CurrentStatus": "In permitting stage",
+      "source_url": "https://www.pvknowhow.com/solar-report/croatia/",
+      "source_name": "PV Know How",
+      "category": "planning",
+      "Date": "TBD",
+      "KeyPoints": [
+        "Large scale project with high capacity.",
+        "In the permitting stage, indicating progress.",
+        "Potential for significant energy production.",
+        "Strong interest from investors.",
+        "Regulatory framework supporting renewable energy.",
+        "Opportunity for technological innovation."
+      ],
+      "partners": []
+    },
+    {
+      "ProjectName": "RP Global Professio Solar PV Project",
+      "Location": "TBD",
+      "Capacity_MW": 266,
+      "Developer": "RP Global Austria",
+      "Timeline": "Expected completion by 2027",
+      "CurrentStatus": "Under development",
+      "source_url": "https://www.pvknowhow.com/solar-report/croatia/",
+      "source_name": "PV Know How",
+      "category": "development",
+      "Date": "TBD",
+      "KeyPoints": [
+        "Substantial capacity for renewable energy.",
+        "Under development with a clear timeline.",
+        "Potential for international collaboration.",
+        "Strong market demand for solar energy.",
+        "Regulatory incentives for large projects.",
+        "Opportunity for innovative financing solutions."
+      ],
+      "partners": []
+    },
+    {
+      "ProjectName": "Bibinje Solar PV Park",
+      "Location": "Zadar County",
+      "Capacity_MW": 60,
+      "Developer": "TBD",
+      "Timeline": "Expected to be commissioned by 2026",
+      "CurrentStatus": "Expected to be commissioned by 2026",
+      "source_url": "https://www.pvknowhow.com/solar-report/croatia/",
+      "source_name": "PV Know How",
+      "category": "planning",
+      "Date": "TBD",
+      "KeyPoints": [
+        "Strategically located in a renewable energy hub.",
+        "Expected commissioning aligns with market growth.",
+        "Potential for local partnerships.",
+        "Regulatory support for solar projects.",
+        "Opportunity for community engagement.",
+        "Attractive for investors looking for growth."
+      ],
+      "partners": []
+    },
+    {
+      "ProjectName": "Solvis Rasinja Solar PV Park",
+      "Location": "Rasinja",
+      "Capacity_MW": 50,
+      "Developer": "Solvis",
+      "Timeline": "Expected completion by 2026",
+      "CurrentStatus": "Planned",
+      "source_url": "https://www.pvknowhow.com/solar-report/croatia/",
+      "source_name": "PV Know How",
+      "category": "planning",
+      "Date": "TBD",
+      "KeyPoints": [
+        "Planned project with significant capacity.",
+        "Potential for innovative solar technology.",
+        "Strong local support for renewable initiatives.",
+        "Regulatory framework favorable for development.",
+        "Opportunity for collaboration with local stakeholders.",
+        "Attractive for long-term investment."
+      ],
+      "partners": []
+    }
+  ]
+}

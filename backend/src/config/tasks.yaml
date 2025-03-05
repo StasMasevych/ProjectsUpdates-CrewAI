@@ -29,9 +29,9 @@ analysis_task:
       "Summary": {{
         "Major developers active in the market": ["<string>"],
         "Most promising projects": [
-          "<string: Project name> - <Why it's promising; why foreign EPCs/investors should consider it>",
-          "<string: Project name> - <Why it's promising; why foreign EPCs/investors should consider it>",
-          "<string: Project name> - <Why it's promising; why foreign EPCs/investors should consider it>"
+          "<string: Project name> - <Why it's promising; why foreign engineering companies/investors should consider it>",
+          "<string: Project name> - <Why it's promising; why foreign engineering companies/investors should consider it>",
+          "<string: Project name> - <Why it's promising; why foreign engineering companies/investors should consider it>"
         ]
       }},
       "Detailed Project List": [

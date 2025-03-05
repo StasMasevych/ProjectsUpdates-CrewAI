@@ -1,0 +1,183 @@
+{
+  "Summary": {
+    "Major developers active in the market": [
+      "Enefit Green",
+      "Nordic Solar",
+      "Green Genius",
+      "Cordiant Capital",
+      "Ignitis Renewables"
+    ],
+    "Most promising projects": [
+      "Moletai PV power plant - This project is the largest solar park in the Baltics with a capacity of 100 MW, making it a key player in supporting Lithuania's energy independence and attracting foreign investment.",
+      "Jonava Solar Park - With a capacity of 252 MW, this project is expected to significantly contribute to local renewable energy generation, making it an attractive opportunity for investors looking to enter the Lithuanian market.",
+      "Tauragė Solar Plant - As the first hybrid wind and solar park in Lithuania, this project represents a unique opportunity for innovation and sustainability, appealing to foreign engineering companies interested in cutting-edge renewable technologies."
+    ]
+  },
+  "Detailed Project List": [
+    {
+      "ProjectName": "Moletai PV power plant",
+      "Location": "Moletai",
+      "Capacity_MW": 100,
+      "Developer": "Enefit Green and Nordic Solar",
+      "Timeline": "Operational since April 2024",
+      "CurrentStatus": "Largest solar park in the Baltics, selling energy to the market",
+      "source_url": "https://renews.biz/92972/enefit-makes-100mw-lithuanian-solar-pact/",
+      "source_name": "Renewable Energy News",
+      "category": "development",
+      "Date": "04/01/2024",
+      "KeyPoints": [
+        "Largest solar park in the Baltics, providing significant energy output.",
+        "Potential for energy sales to the market, enhancing revenue streams.",
+        "Operational status indicates readiness for immediate energy production.",
+        "Strategic location supports energy independence goals.",
+        "Regulatory support for renewable energy projects in Lithuania.",
+        "Strong financial backing from reputable developers."
+      ],
+      "partners": [
+        "Nordic Solar"
+      ]
+    },
+    {
+      "ProjectName": "Solar power plants (4)",
+      "Location": "Various locations in Lithuania",
+      "Capacity_MW": 32.6,
+      "Developer": "Green Genius and Cordiant Capital",
+      "Timeline": "In development",
+      "CurrentStatus": "Expected to reduce carbon emissions significantly, supporting EU climate goals",
+      "source_url": "https://www.cordiantcap.com/cordiant-capital-partners-with-green-genius-to-drive-32-6-mw-solar-power-expansion-in-lithuania/",
+      "source_name": "Cordiant Capital",
+      "category": "development",
+      "Date": "N/A",
+      "KeyPoints": [
+        "Supports EU climate goals through significant carbon emission reductions.",
+        "Diverse locations enhance energy distribution and accessibility.",
+        "In development phase allows for potential investor engagement.",
+        "Collaboration with established partners increases project credibility.",
+        "Regulatory incentives for renewable energy projects in Lithuania.",
+        "Financial viability supported by strong partnership."
+      ],
+      "partners": [
+        "Green Genius"
+      ]
+    },
+    {
+      "ProjectName": "Švenčionys Solar Park",
+      "Location": "Švenčionys",
+      "Capacity_MW": 80,
+      "Developer": "Nordic Solar",
+      "Timeline": "Under construction",
+      "CurrentStatus": "Expected to power approximately 26,000 households",
+      "source_url": "N/A",
+      "source_name": "N/A",
+      "category": "development",
+      "Date": "N/A",
+      "KeyPoints": [
+        "Significant capacity to power a large number of households.",
+        "Under construction, indicating progress towards operational status.",
+        "Potential for community engagement and local support.",
+        "Strategic investment opportunity for renewable energy.",
+        "Regulatory support for large-scale solar projects.",
+        "Financial incentives available for renewable energy investments."
+      ],
+      "partners": [
+        "N/A"
+      ]
+    },
+    {
+      "ProjectName": "Tauragė Solar Plant",
+      "Location": "Tauragė District",
+      "Capacity_MW": 22,
+      "Developer": "Ignitis Renewables",
+      "Timeline": "Under construction, expected completion in 2024",
+      "CurrentStatus": "First hybrid wind and solar park in Lithuania",
+      "source_url": "N/A",
+      "source_name": "N/A",
+      "category": "development",
+      "Date": "N/A",
+      "KeyPoints": [
+        "Innovative hybrid model combining wind and solar energy.",
+        "Expected completion in 2024, attracting timely investment.",
+        "Potential for enhanced energy efficiency and output.",
+        "Regulatory support for hybrid renewable energy projects.",
+        "Financial backing from a reputable developer.",
+        "Opportunity for technological advancements in renewable energy."
+      ],
+      "partners": [
+        "N/A"
+      ]
+    },
+    {
+      "ProjectName": "Jonava Solar Park",
+      "Location": "Jonava",
+      "Capacity_MW": 252,
+      "Developer": "Ignitis Renewables",
+      "Timeline": "In development, expected completion in 2025",
+      "CurrentStatus": "Significant contribution to local renewable energy generation",
+      "source_url": "N/A",
+      "source_name": "N/A",
+      "category": "development",
+      "Date": "N/A",
+      "KeyPoints": [
+        "Large capacity project with significant local impact.",
+        "In development phase allows for potential investor engagement.",
+        "Expected completion in 2025, aligning with energy demand growth.",
+        "Regulatory support for renewable energy projects.",
+        "Strong financial backing from a reputable developer.",
+        "Potential for community engagement and local support."
+      ],
+      "partners": [
+        "N/A"
+      ]
+    },
+    {
+      "ProjectName": "Kaišiadorys Solar Park",
+      "Location": "Kaišiadorys",
+      "Capacity_MW": 40,
+      "Developer": "To be determined",
+      "Timeline": "Planned",
+      "CurrentStatus": "Aiming to be the largest solar park for prosumers",
+      "source_url": "N/A",
+      "source_name": "N/A",
+      "category": "planning",
+      "Date": "N/A",
+      "KeyPoints": [
+        "Planned project targeting prosumers, enhancing local energy production.",
+        "Potential for community engagement and local support.",
+        "Regulatory support for prosumer-focused renewable energy projects.",
+        "Opportunity for innovative financing models.",
+        "Strong interest from local stakeholders.",
+        "Potential for technological advancements in solar energy."
+      ],
+      "partners": [
+        "N/A"
+      ]
+    },
+    {
+      "ProjectName": "Overall solar capacity in Lithuania",
+      "Location": "Lithuania",
+      "Capacity_MW": {
+        "total_capacity": 3029,
+        "wind_capacity": 1129,
+        "solar_capacity": 212
+      },
+      "Developer": "N/A",
+      "Timeline": "Current as of August 2023",
+      "CurrentStatus": "Capacity of solar and wind power plants has rapidly increased, with plans for future growth.",
+      "source_url": "https://www.litgrid.eu/index.php/news-events-/news/litgrid-solar-and-wind-capacity-in-lithuania-has-reached-3-gw/32886",
+      "source_name": "Litgrid",
+      "category": "development",
+      "Date": "08/01/2023",
+      "KeyPoints": [
+        "Total capacity of 3029 MW indicates strong growth in renewable energy.",
+        "Significant increase in both solar and wind capacities.",
+        "Regulatory support for renewable energy expansion.",
+        "Potential for future investments in renewable energy projects.",
+        "Strong market demand for renewable energy sources.",
+        "Financial incentives available for renewable energy investments."
+      ],
+      "partners": [
+        "N/A"
+      ]
+    }
+  ]
+}

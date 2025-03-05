@@ -111,6 +111,7 @@ async def process_country(country: str, technology: str) -> Dict:
             # Find the JSON content within the string
             json_start = result_str.find('{')
             json_end = result_str.rfind('}') + 1
+            
             if json_start >= 0 and json_end > json_start:
                 json_content = result_str[json_start:json_end]
                 print("\n🔍 Extracted JSON content:")
@@ -118,178 +119,49 @@ async def process_country(country: str, technology: str) -> Dict:
                 
                 # Parse the JSON content
                 parsed_result = json.loads(json_content)
-                print("\n✅ Successfully parsed JSON:")
-                print(json.dumps(parsed_result, indent=2))
-            else:
-                print("\n❌ Could not find JSON content in result")
-                return create_empty_result()
+                print("\n✅ Successfully parsed JSON")
                 
-        except json.JSONDecodeError as e:
-            print(f"\n❌ JSON parsing error for {country}")
-            print(f"Error details: {str(e)}")
-            return create_empty_result()
+                # Ensure output directory exists
+                output_dir = Path(__file__).parent.parent / 'output'
+                output_dir = output_dir.absolute()  # Get absolute path without resolving symlinks
+                output_dir.mkdir(exist_ok=True)
+                
+                # Save country-specific analysis results
+                analysis_output_file = output_dir / f'analysis_results_{country}.json'
+                with open(analysis_output_file, 'w', encoding='utf-8') as f:
+                    json.dump(parsed_result, f, ensure_ascii=False, indent=2)
+                print(f"\n💾 Analysis results saved to: {analysis_output_file}")
+                
+                # Save country-specific search results if available
+                search_results = []
+                if "search_results" in parsed_result:
+                    search_results = parsed_result["search_results"]
+                
+                # Always create a search results file, even if empty
+                search_output_file = output_dir / f'search_results_{country}.json'
+                with open(search_output_file, 'w', encoding='utf-8') as f:
+                    json.dump(search_results, f, ensure_ascii=False, indent=2)
+                print(f"\n💾 Search results saved to: {search_output_file}")
+                
+                # Standardize the result structure
+                standardized_result = standardize_country_result(parsed_result, country)
+                
+                return standardized_result
+            else:
+                print("\n❌ Could not find valid JSON content in the result")
+                return {"error": "Could not parse result"}
         except Exception as e:
-            print(f"\n❌ Error processing result for {country}: {str(e)}")
-            return create_empty_result()
-        
-        print("\n🔄 Standardizing result structure")
-        standardized_result = standardize_country_result(parsed_result, country)
-        
-        print("\n📊 Final standardized result structure:")
-        print(json.dumps(standardized_result, indent=2))
-        
-        # When saving files, ensure we're using the output directory
-        output_dir = Path(__file__).parent.parent / 'output'
-        output_dir.mkdir(exist_ok=True)
-        
-        # Don't save individual country files here - let the accumulator handle it
-        # This prevents files from being created in the root directory
-        
-        # Return the standardized result without writing files
-        return standardized_result
-
+            print(f"\n❌ Error parsing result: {str(e)}")
+            return {"error": str(e)}
+            
     except Exception as e:
-        print(f"\n❌ Error in process_country for {country}")
-        print(f"Error type: {type(e).__name__}")
-        print(f"Error message: {str(e)}")
-        print("Full traceback:")
-        import traceback
-        traceback.print_exc()
-        return create_empty_result()
+        print(f"\n❌ Error in process_country for {country}: {str(e)}")
+        return {"error": str(e)}
 
-def create_empty_result() -> Dict:
-    """Create an empty result structure"""
-    return {
-        "search_results": [],
-        "analysis": {
-            "Summary": {
-                "Total MW of new projects": 0,
-                "Total investment value": "0",
-                "Key trends in project locations": [],
-                "Major developers active in the market": [],
-                "Project development timelines": []
-            },
-            "Detailed Project List": []
-        }
-    }
-
-def standardize_country_result(result: any, country: str) -> Dict:
-    """Standardize the country result into a consistent format"""
-    try:
-        print(f"\n🔍 Standardizing result for {country}")
-        print(f"Input result type: {type(result)}")
-        print("Input result structure:")
-        print(json.dumps(result, indent=2))
-        
-        standardized_projects = []
-        
-        # Handle different result structures
-        projects = []
-        print("\n📦 Extracting projects from result")
-        
-        if isinstance(result, list):
-            print("Result is a list, filtering for project entries")
-            projects = [p for p in result if isinstance(p, dict) and ('ProjectName' in p or 'name' in p)]
-            print(f"Found {len(projects)} projects in list")
-            
-        elif isinstance(result, dict):
-            print("Result is a dictionary, checking known structures")
-            if 'Detailed Project List' in result:
-                print("Found 'Detailed Project List' structure")
-                projects = result.get('Detailed Project List', [])
-            elif 'raw_result' in result and 'projects' in result['raw_result']:
-                print("Found 'raw_result.projects' structure")
-                projects = result['raw_result']['projects']
-            elif 'projects' in result:
-                print("Found direct 'projects' structure")
-                projects = result['projects']
-            
-            print(f"Extracted {len(projects)} projects from dictionary")
-        
-        print("\n📋 Extracted projects:")
-        print(json.dumps(projects, indent=2))
-        
-        # Generate today's date in MM/DD/YYYY format - use this for ALL projects
-        today_date = datetime.now().strftime("%m/%d/%Y")
-        print(f"Using today's date for all projects: {today_date}")
-        
-        # Standardize each project
-        print("\n🔄 Standardizing individual projects")
-        for project in projects:
-            print(f"\nProcessing project: {project.get('ProjectName') or project.get('name', 'Unknown')}")
-            
-            # Handle key points with more flexibility
-            key_points = []
-            if "KeyPoints" in project and isinstance(project["KeyPoints"], list):
-                key_points = project["KeyPoints"]
-            elif "keyPoints" in project and isinstance(project["keyPoints"], list):
-                key_points = project["keyPoints"]
-            elif "key_points" in project and isinstance(project["key_points"], list):
-                key_points = project["key_points"]
-            
-            # Handle partners with similar flexibility
-            partners = []
-            if "partners" in project and isinstance(project["partners"], list):
-                partners = project["partners"]
-            elif "Partners" in project and isinstance(project["Partners"], list):
-                partners = project["Partners"]
-            
-            standardized_project = {
-                "name": project.get("ProjectName") or project.get("name", "Unknown"),
-                "location": project.get("Location") or project.get("location", country),
-                "capacity": str(project.get("Capacity_MW") or project.get("capacity", "N/A")),
-                "developer": project.get("Developer") or project.get("developer", "Unknown"),
-                "investment": project.get("InvestmentValue") or project.get("investment", "N/A"),
-                "timeline": project.get("Timeline") or project.get("timeline", "N/A"),
-                "status": project.get("CurrentStatus") or project.get("status", "N/A"),
-                "source_url": project.get("source_url", ""),
-                "source_name": project.get("source_name", country),
-                "category": project.get("category", "development"),
-                "date": today_date,  # Always use today's date
-                "keyPoints": key_points,
-                "partners": partners
-            }
-            standardized_projects.append(standardized_project)
-            print("Standardized project:", json.dumps(standardized_project, indent=2))
-            print(f"Key points: {key_points}")
-            print(f"Partners: {partners}")
-            print(f"Date: {today_date}")
-
-        print(f"\n✅ Successfully standardized {len(standardized_projects)} projects")
-        
-        # Create final result structure
-        standardized_result = {
-            "timestamp": str(datetime.now()),
-            "search_results": [],  # Will be populated by the accumulator
-            "analysis": {
-                "Summary": {
-                    "Major developers active in the market": list(set(p["developer"] for p in standardized_projects if p["developer"] != "Unknown")),
-                    "Most promising projects": []  # Add this field to match tasks.yaml
-                },
-                "Detailed Project List": standardized_projects
-            }
-        }
-        
-        print("\n📊 Final result structure:")
-        print(json.dumps(standardized_result, indent=2))
-        return standardized_result
-
-    except Exception as e:
-        print(f"\n❌ Error in standardize_country_result for {country}")
-        print(f"Error type: {type(e).__name__}")
-        print(f"Error message: {str(e)}")
-        print("Full traceback:")
-        import traceback
-        traceback.print_exc()
-        return create_empty_result()
-
-def normalize_project(project: Dict, country: str) -> Dict:
-    """Normalize project data to a consistent format"""
-    # Use the structure from tasks.yaml
-    # Check for KeyPoints with capital K as in tasks.yaml
+def standardize_project(project: Dict, country: str) -> Dict:
+    """Standardize project data structure"""
+    # Extract key points with flexibility for different field names
     key_points = []
-    
-    # Check all possible key point formats
     if "KeyPoints" in project and isinstance(project["KeyPoints"], list):
         key_points = project["KeyPoints"]
     elif "keyPoints" in project and isinstance(project["keyPoints"], list):
@@ -345,6 +217,111 @@ def normalize_project(project: Dict, country: str) -> Dict:
         "partners": partners  # Add the new partners field
     }
 
+def standardize_country_result(result: any, country: str) -> Dict:
+    """Standardize the country result into a consistent format"""
+    try:
+        print(f"\n🔍 Standardizing result for {country}")
+        print(f"Input result type: {type(result)}")
+        
+        standardized_projects = []
+        
+        # Handle different result structures
+        projects = []
+        print("\n📦 Extracting projects from result")
+        
+        if isinstance(result, list):
+            print("Result is a list, filtering for project entries")
+            projects = [p for p in result if isinstance(p, dict) and ('ProjectName' in p or 'name' in p)]
+            print(f"Found {len(projects)} projects in list")
+            
+        elif isinstance(result, dict):
+            print("Result is a dictionary, checking known structures")
+            if 'Detailed Project List' in result:
+                print("Found 'Detailed Project List' structure")
+                projects = result.get('Detailed Project List', [])
+            elif 'raw_result' in result and 'projects' in result['raw_result']:
+                print("Found 'raw_result.projects' structure")
+                projects = result['raw_result']['projects']
+            elif 'projects' in result:
+                print("Found direct 'projects' structure")
+                projects = result['projects']
+            
+            print(f"Extracted {len(projects)} projects from dictionary")
+        
+        # Generate today's date in MM/DD/YYYY format - use this for ALL projects
+        today_date = datetime.now().strftime("%m/%d/%Y")
+        print(f"Using today's date for all projects: {today_date}")
+        
+        # Standardize each project
+        print("\n🔄 Standardizing individual projects")
+        for project in projects:
+            print(f"\nProcessing project: {project.get('ProjectName') or project.get('name', 'Unknown')}")
+            
+            # Handle key points with more flexibility
+            key_points = []
+            if "KeyPoints" in project and isinstance(project["KeyPoints"], list):
+                key_points = project["KeyPoints"]
+            elif "keyPoints" in project and isinstance(project["keyPoints"], list):
+                key_points = project["keyPoints"]
+            elif "key_points" in project and isinstance(project["key_points"], list):
+                key_points = project["key_points"]
+            
+            # Handle partners with similar flexibility
+            partners = []
+            if "partners" in project and isinstance(project["partners"], list):
+                partners = project["partners"]
+            elif "Partners" in project and isinstance(project["Partners"], list):
+                partners = project["Partners"]
+            
+            standardized_project = {
+                "name": project.get("ProjectName") or project.get("name", "Unknown"),
+                "location": project.get("Location") or project.get("location", country),
+                "capacity": str(project.get("Capacity_MW") or project.get("capacity", "N/A")),
+                "developer": project.get("Developer") or project.get("developer", "Unknown"),
+                "investment": project.get("InvestmentValue") or project.get("investment", "N/A"),
+                "timeline": project.get("Timeline") or project.get("timeline", "N/A"),
+                "status": project.get("CurrentStatus") or project.get("status", "N/A"),
+                "source_url": project.get("source_url", ""),
+                "source_name": project.get("source_name", country),
+                "category": project.get("category", "development"),
+                "date": today_date,  # Always use today's date
+                "keyPoints": key_points,
+                "partners": partners
+            }
+            standardized_projects.append(standardized_project)
+
+        print(f"\n✅ Successfully standardized {len(standardized_projects)} projects")
+        
+        # Extract promising projects from the original result if available
+        most_promising_projects = []
+        if isinstance(result, dict) and "Summary" in result and "Most promising projects" in result["Summary"]:
+            most_promising_projects = result["Summary"]["Most promising projects"]
+            print(f"Found {len(most_promising_projects)} promising projects in original result")
+        
+        # Create final result structure
+        standardized_result = {
+            "timestamp": str(datetime.now()),
+            "search_results": [],  # Will be populated by the accumulator
+            "analysis": {
+                "Summary": {
+                    "Major developers active in the market": list(set(p["developer"] for p in standardized_projects if p["developer"] != "Unknown")),
+                    "Most promising projects": most_promising_projects  # Use the original promising projects
+                },
+                "Detailed Project List": standardized_projects
+            }
+        }
+        
+        return standardized_result
+
+    except Exception as e:
+        print(f"\n❌ Error in standardize_country_result for {country}")
+        print(f"Error type: {type(e).__name__}")
+        print(f"Error message: {str(e)}")
+        print("Full traceback:")
+        import traceback
+        traceback.print_exc()
+        return create_empty_result()
+
 @app.get("/api/progress")
 async def get_progress():
     async def event_generator():
@@ -379,14 +356,12 @@ async def get_projects(region: str, technology: str):
         # Process the region and get results
         result = await process_region(region, technology)
         
-        # No need to save results again as accumulator.save_results() already did this
+        # The accumulator.save_results() already saved the files to the output directory
+        # No need to save them again here
         output_dir = Path(__file__).parent.parent / 'output'
-        output_file = output_dir / 'analysis_results.json'
-        
-        # Also save search results
+        output_dir = output_dir.absolute()  # Get absolute path without resolving symlinks
+        output_file = output_dir / 'accumulated_analysis.json'
         search_output_file = output_dir / 'search_results.json'
-        with open(search_output_file, 'w', encoding='utf-8') as f:
-            json.dump(result.get("search_results", []), f, ensure_ascii=False, indent=2)
         
         print("\n💾 Results saved to:", output_file)
         print("\n💾 Search results saved to:", search_output_file)
