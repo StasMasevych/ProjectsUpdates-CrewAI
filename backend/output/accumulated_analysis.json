@@ -1,33 +1,30 @@
 {
   "search_results": [],
   "analysis": {
-    "timestamp": "2025-03-05T19:38:50.278974",
+    "timestamp": "2025-03-06T10:53:54.319395",
     "summary": {
       "countries_analyzed": [
         "Croatia",
         "Lithuania"
       ],
       "major_developers": [
-        "Nordic Solar",
-        "Ignitis Renewables",
-        "TBD",
-        "Solvis",
-        "HEP (Hrvatska Elektroprivreda)",
-        "N/A",
-        "To be determined",
-        "Green Genius and Cordiant Capital",
-        "Enefit Green and Nordic Solar",
-        "RP Global Austria",
-        "Enlight Renewable Energy",
-        "Hive Energy"
+        "Hive Energy",
+        "Various, supported by RES Croatia",
+        "Ignitis Group",
+        "Radar",
+        "Energy Solar Projekty sp.z o.o.",
+        "Various (includes residential and industrial projects)",
+        "HEP (Hrvatska elektroprivreda)",
+        "ILTE",
+        "JSC Atsinaujinančios Energetikos Investicijos"
       ],
       "most_promising_projects": [
-        "Croatia: SE Korlat - This project is the largest solar power plant in Croatia, covering 100,000 homes, making it a significant investment opportunity for foreign engineering companies due to its scale and potential impact on the local energy market.",
-        "Croatia: ERE Croatia Solar PV Park - With a capacity of 386 MW and currently in the permitting stage, this project represents a substantial future contribution to Croatia's solar capacity, attracting investors looking for large-scale renewable energy projects.",
-        "Croatia: 99 MW Project - Scheduled to be operational by 2026, this project offers a promising return on investment due to its significant capacity and the growing demand for renewable energy in Croatia.",
-        "Lithuania: Moletai PV power plant - This project is the largest solar park in the Baltics with a capacity of 100 MW, making it a key player in supporting Lithuania's energy independence and attracting foreign investment.",
-        "Lithuania: Jonava Solar Park - With a capacity of 252 MW, this project is expected to significantly contribute to local renewable energy generation, making it an attractive opportunity for investors looking to enter the Lithuanian market.",
-        "Lithuania: Tauragė Solar Plant - As the first hybrid wind and solar park in Lithuania, this project represents a unique opportunity for innovation and sustainability, appealing to foreign engineering companies interested in cutting-edge renewable technologies."
+        "Croatia: SE Korlat - This project is set to cover 100,000 homes and represents a significant investment of 70 million euros, making it a key player in Croatia's solar landscape.",
+        "Croatia: Solar Capacity Additions 2024 - With 397.1 MW added in 2024, this project showcases the rapid growth of solar energy in Croatia, attracting potential foreign investment.",
+        "Croatia: Various Agrisolar Projects - The recognition of agrisolar under the new Spatial Planning Act opens up new opportunities for innovative solar solutions on agricultural lands.",
+        "Lithuania: Solar power plant near Elektrėnai - This project is operational and contributes to Lithuania's green energy goals, making it an attractive opportunity for foreign investors looking to enter a growing market.",
+        "Lithuania: Small-scale photovoltaic plants - With significant EU funding, this project is under construction and represents a scalable model for renewable energy investment in the region.",
+        "Lithuania: Renewable energy loans for legal entities - This initiative provides financial support for solar projects, indicating a strong governmental push towards renewable energy, which can attract foreign engineering companies."
       ]
     },
     "projects_by_country": {
@@ -36,346 +33,212 @@
           "name": "SE Korlat",
           "location": "Benkovac, Zadar County",
           "capacity": "75",
-          "developer": "HEP (Hrvatska Elektroprivreda)",
+          "developer": "HEP (Hrvatska elektroprivreda)",
           "investment": "N/A",
-          "timeline": "2024 - 2025",
-          "status": "Under development",
+          "timeline": "Expected to start operating in 2026",
+          "status": "Under construction",
           "source_url": "https://total-croatia-news.com/news/croatian-solar-power-plant-2/",
           "source_name": "Total Croatia News",
           "category": "development",
-          "date": "03/05/2025",
+          "date": "03/06/2025",
           "keyPoints": [
-            "Largest solar power plant in Croatia.",
-            "Investment of 70 million euros.",
-            "Expected to cover 100,000 homes.",
-            "Significant annual production of 165 MWh.",
-            "Strong government support for renewable energy.",
-            "High potential for return on investment."
+            "Significant capacity to cover a large number of homes.",
+            "Large investment indicates strong financial backing.",
+            "Construction timeline aligns with Croatia's renewable energy goals.",
+            "Potential for partnerships with local and international firms.",
+            "Regulatory support for renewable energy projects.",
+            "Attractive for investors due to high demand for clean energy."
           ],
           "partners": []
         },
         {
-          "name": "Agri-PV Project",
-          "location": "Sisak-Moslavina County",
-          "capacity": "6",
-          "developer": "Hive Energy",
+          "name": "Solar Capacity Additions 2024",
+          "location": "Croatia",
+          "capacity": "397.1",
+          "developer": "Various (includes residential and industrial projects)",
           "investment": "N/A",
-          "timeline": "TBD",
-          "status": "Secured land",
-          "source_url": "https://www.hiveenergy.co.uk/2024/02/09/we-have-secured-land-on-three-solar-projects-in-croatia/",
-          "source_name": "Hive Energy",
-          "category": "development",
-          "date": "03/05/2025",
-          "keyPoints": [
-            "Innovative Agri-PV technology.",
-            "Potential for dual land use.",
-            "Supports local agriculture.",
-            "Low competition in the Agri-PV sector.",
-            "Regulatory incentives for green projects.",
-            "Opportunity for sustainable investment."
-          ],
-          "partners": []
-        },
-        {
-          "name": "50 MW Solar Project",
-          "location": "Sisak-Moslavina County",
-          "capacity": "50",
-          "developer": "Hive Energy",
-          "investment": "N/A",
-          "timeline": "TBD",
-          "status": "Secured land",
-          "source_url": "https://www.hiveenergy.co.uk/2024/02/09/we-have-secured-land-on-three-solar-projects-in-croatia/",
-          "source_name": "Hive Energy",
-          "category": "development",
-          "date": "03/05/2025",
-          "keyPoints": [
-            "Significant capacity for a single project.",
-            "Strategically located in a renewable energy-friendly region.",
-            "Potential for quick development.",
-            "Strong local support for renewable initiatives.",
-            "Competitive advantage in the local market.",
-            "Attractive for foreign investors."
-          ],
-          "partners": []
-        },
-        {
-          "name": "99 MW Project",
-          "location": "Bjelovar-Bilogora County",
-          "capacity": "99",
-          "developer": "Hive Energy",
-          "investment": "N/A",
-          "timeline": "Expected to be operational by 2026",
-          "status": "Expected to be operational by 2026",
+          "timeline": "Installed in 2024",
+          "status": "Completed",
           "source_url": "https://www.pv-magazine.com/2025/02/03/croatias-new-solar-additions-hit-397-1-mw-in-2024/",
           "source_name": "PV Magazine",
+          "category": "investment",
+          "date": "03/06/2025",
+          "keyPoints": [
+            "Demonstrates rapid growth in solar capacity.",
+            "Diverse range of projects indicates broad market interest.",
+            "Completed status allows for immediate returns on investment.",
+            "Potential for further expansions in the future.",
+            "Regulatory environment is supportive of solar energy.",
+            "Financial incentives available for new projects."
+          ],
+          "partners": []
+        },
+        {
+          "name": "Solar Projects by Hive Energy",
+          "location": "Sisak-Moslavina and Bjelovar-Bilogora counties",
+          "capacity": "66.99",
+          "developer": "Hive Energy",
+          "investment": "N/A",
+          "timeline": "Permits expected by end of 2024 for two sites; one requires a spatial plan insertion",
+          "status": "Land secured, in the permitting process",
+          "source_url": "https://www.hiveenergy.co.uk/2024/02/09/we-have-secured-land-on-three-solar-projects-in-croatia/",
+          "source_name": "Hive Energy",
+          "category": "planning",
+          "date": "03/06/2025",
+          "keyPoints": [
+            "Secured land for multiple projects indicates strong commitment.",
+            "Diverse capacity across projects allows for flexible investment.",
+            "Permitting process is underway, indicating progress.",
+            "Potential for collaboration with local authorities.",
+            "Regulatory framework supports renewable energy initiatives.",
+            "Financial backing from Hive Energy enhances project viability."
+          ],
+          "partners": []
+        },
+        {
+          "name": "Radar's PV Projects",
+          "location": "Daruvar, northeastern Croatia",
+          "capacity": "30",
+          "developer": "Radar",
+          "investment": "N/A",
+          "timeline": "EIA sought, project details pending",
+          "status": "Seeking Environmental Impact Assessment (EIA)",
+          "source_url": "https://seenews.com/news/croatias-radar-seeks-eia-for-30-mwp-pv-projects-1267165",
+          "source_name": "SeeNews",
           "category": "development",
-          "date": "03/05/2025",
+          "date": "03/06/2025",
           "keyPoints": [
-            "Large capacity project with significant output.",
-            "Part of Croatia's growing solar capacity.",
-            "Strong market demand for renewable energy.",
-            "Potential for partnerships with local firms.",
-            "Regulatory support for renewable energy projects.",
-            "Attractive for long-term investment."
+            "Focus on environmental assessments indicates responsible development.",
+            "Potential for local job creation during construction.",
+            "Regulatory compliance is a priority for project success.",
+            "Interest from investors in sustainable projects.",
+            "Future capacity expansion possible based on EIA results.",
+            "Competitive advantage through early compliance with regulations."
           ],
           "partners": []
         },
         {
-          "name": "ERE Croatia Solar PV Park",
-          "location": "TBD",
-          "capacity": "386",
-          "developer": "Enlight Renewable Energy",
+          "name": "Various Agrisolar Projects",
+          "location": "Across Croatia (focus on agricultural lands)",
+          "capacity": "1000",
+          "developer": "Various, supported by RES Croatia",
           "investment": "N/A",
-          "timeline": "Expected completion by 2026",
-          "status": "In permitting stage",
-          "source_url": "https://www.pvknowhow.com/solar-report/croatia/",
-          "source_name": "PV Know How",
+          "timeline": "Ongoing projects following Spatial Planning Act 2023",
+          "status": "In planning stages with ongoing interest from developers",
+          "source_url": "https://agrisolareurope.org/article/croatia-takes-a-leap-for-agrisolar/",
+          "source_name": "Agrisolar Europe",
           "category": "planning",
-          "date": "03/05/2025",
+          "date": "03/06/2025",
           "keyPoints": [
-            "Large scale project with high capacity.",
-            "In the permitting stage, indicating progress.",
-            "Potential for significant energy production.",
-            "Strong interest from investors.",
-            "Regulatory framework supporting renewable energy.",
-            "Opportunity for technological innovation."
-          ],
-          "partners": []
-        },
-        {
-          "name": "RP Global Professio Solar PV Project",
-          "location": "TBD",
-          "capacity": "266",
-          "developer": "RP Global Austria",
-          "investment": "N/A",
-          "timeline": "Expected completion by 2027",
-          "status": "Under development",
-          "source_url": "https://www.pvknowhow.com/solar-report/croatia/",
-          "source_name": "PV Know How",
-          "category": "development",
-          "date": "03/05/2025",
-          "keyPoints": [
-            "Substantial capacity for renewable energy.",
-            "Under development with a clear timeline.",
-            "Potential for international collaboration.",
-            "Strong market demand for solar energy.",
-            "Regulatory incentives for large projects.",
-            "Opportunity for innovative financing solutions."
-          ],
-          "partners": []
-        },
-        {
-          "name": "Bibinje Solar PV Park",
-          "location": "Zadar County",
-          "capacity": "60",
-          "developer": "TBD",
-          "investment": "N/A",
-          "timeline": "Expected to be commissioned by 2026",
-          "status": "Expected to be commissioned by 2026",
-          "source_url": "https://www.pvknowhow.com/solar-report/croatia/",
-          "source_name": "PV Know How",
-          "category": "planning",
-          "date": "03/05/2025",
-          "keyPoints": [
-            "Strategically located in a renewable energy hub.",
-            "Expected commissioning aligns with market growth.",
-            "Potential for local partnerships.",
-            "Regulatory support for solar projects.",
-            "Opportunity for community engagement.",
-            "Attractive for investors looking for growth."
-          ],
-          "partners": []
-        },
-        {
-          "name": "Solvis Rasinja Solar PV Park",
-          "location": "Rasinja",
-          "capacity": "50",
-          "developer": "Solvis",
-          "investment": "N/A",
-          "timeline": "Expected completion by 2026",
-          "status": "Planned",
-          "source_url": "https://www.pvknowhow.com/solar-report/croatia/",
-          "source_name": "PV Know How",
-          "category": "planning",
-          "date": "03/05/2025",
-          "keyPoints": [
-            "Planned project with significant capacity.",
-            "Potential for innovative solar technology.",
-            "Strong local support for renewable initiatives.",
-            "Regulatory framework favorable for development.",
-            "Opportunity for collaboration with local stakeholders.",
-            "Attractive for long-term investment."
+            "Innovative use of agricultural land for solar energy.",
+            "Potential for dual-use of land enhances project viability.",
+            "Regulatory support for agrisolar projects is a significant advantage.",
+            "Interest from various developers indicates market potential.",
+            "Financial incentives available for agrisolar initiatives.",
+            "Long-term sustainability goals align with national energy strategy."
           ],
           "partners": []
         }
       ],
       "Lithuania": [
         {
-          "name": "Moletai PV power plant",
-          "location": "Moletai",
-          "capacity": "100",
-          "developer": "Enefit Green and Nordic Solar",
+          "name": "Solar power plant near Elektrėnai",
+          "location": "near Elektrėnai, Lithuania",
+          "capacity": "1",
+          "developer": "Ignitis Group",
           "investment": "N/A",
-          "timeline": "Operational since April 2024",
-          "status": "Largest solar park in the Baltics, selling energy to the market",
-          "source_url": "https://renews.biz/92972/enefit-makes-100mw-lithuanian-solar-pact/",
-          "source_name": "Renewable Energy News",
+          "timeline": "Operational since 06/30/2020",
+          "status": "Operational",
+          "source_url": "https://ignitisgrupe.lt/en/news/ignitis-group-produced-third-more-green-energy-year",
+          "source_name": "Ignitis Group News",
           "category": "development",
-          "date": "03/05/2025",
+          "date": "03/06/2025",
           "keyPoints": [
-            "Largest solar park in the Baltics, providing significant energy output.",
-            "Potential for energy sales to the market, enhancing revenue streams.",
-            "Operational status indicates readiness for immediate energy production.",
-            "Strategic location supports energy independence goals.",
-            "Regulatory support for renewable energy projects in Lithuania.",
-            "Strong financial backing from reputable developers."
+            "Utilizes advanced solar technology for efficient energy production.",
+            "Part of a larger initiative to increase renewable energy capacity in Lithuania.",
+            "Established operational timeline with proven results.",
+            "Strong backing from a major energy company enhances credibility.",
+            "Favorable regulatory environment supporting renewable energy.",
+            "Demonstrates financial viability with ongoing energy sales."
           ],
           "partners": [
-            "Nordic Solar"
+            "Lithuanian Government",
+            "Local Energy Providers"
           ]
         },
         {
-          "name": "Solar power plants (4)",
-          "location": "Various locations in Lithuania",
-          "capacity": "32.6",
-          "developer": "Green Genius and Cordiant Capital",
+          "name": "Small-scale photovoltaic plants",
+          "location": "Poland",
+          "capacity": "66",
+          "developer": "Energy Solar Projekty sp.z o.o.",
           "investment": "N/A",
-          "timeline": "In development",
-          "status": "Expected to reduce carbon emissions significantly, supporting EU climate goals",
-          "source_url": "https://www.cordiantcap.com/cordiant-capital-partners-with-green-genius-to-drive-32-6-mw-solar-power-expansion-in-lithuania/",
-          "source_name": "Cordiant Capital",
-          "category": "development",
-          "date": "03/05/2025",
+          "timeline": "Under Construction",
+          "status": "Under Construction",
+          "source_url": "https://lordslb.lt/en/news/",
+          "source_name": "Lord's Bank News",
+          "category": "investment",
+          "date": "03/06/2025",
           "keyPoints": [
-            "Supports EU climate goals through significant carbon emission reductions.",
-            "Diverse locations enhance energy distribution and accessibility.",
-            "In development phase allows for potential investor engagement.",
-            "Collaboration with established partners increases project credibility.",
-            "Regulatory incentives for renewable energy projects in Lithuania.",
-            "Financial viability supported by strong partnership."
-          ],
-          "partners": [
-            "Green Genius"
-          ]
-        },
-        {
-          "name": "Švenčionys Solar Park",
-          "location": "Švenčionys",
-          "capacity": "80",
-          "developer": "Nordic Solar",
-          "investment": "N/A",
-          "timeline": "Under construction",
-          "status": "Expected to power approximately 26,000 households",
-          "source_url": "N/A",
-          "source_name": "N/A",
-          "category": "development",
-          "date": "03/05/2025",
-          "keyPoints": [
-            "Significant capacity to power a large number of households.",
-            "Under construction, indicating progress towards operational status.",
-            "Potential for community engagement and local support.",
-            "Strategic investment opportunity for renewable energy.",
-            "Regulatory support for large-scale solar projects.",
-            "Financial incentives available for renewable energy investments."
-          ],
-          "partners": [
-            "N/A"
-          ]
-        },
-        {
-          "name": "Tauragė Solar Plant",
-          "location": "Tauragė District",
-          "capacity": "22",
-          "developer": "Ignitis Renewables",
-          "investment": "N/A",
-          "timeline": "Under construction, expected completion in 2024",
-          "status": "First hybrid wind and solar park in Lithuania",
-          "source_url": "N/A",
-          "source_name": "N/A",
-          "category": "development",
-          "date": "03/05/2025",
-          "keyPoints": [
-            "Innovative hybrid model combining wind and solar energy.",
-            "Expected completion in 2024, attracting timely investment.",
-            "Potential for enhanced energy efficiency and output.",
-            "Regulatory support for hybrid renewable energy projects.",
-            "Financial backing from a reputable developer.",
-            "Opportunity for technological advancements in renewable energy."
-          ],
-          "partners": [
-            "N/A"
-          ]
-        },
-        {
-          "name": "Jonava Solar Park",
-          "location": "Jonava",
-          "capacity": "252",
-          "developer": "Ignitis Renewables",
-          "investment": "N/A",
-          "timeline": "In development, expected completion in 2025",
-          "status": "Significant contribution to local renewable energy generation",
-          "source_url": "N/A",
-          "source_name": "N/A",
-          "category": "development",
-          "date": "03/05/2025",
-          "keyPoints": [
-            "Large capacity project with significant local impact.",
-            "In development phase allows for potential investor engagement.",
-            "Expected completion in 2025, aligning with energy demand growth.",
+            "Focus on small-scale, independent energy production.",
+            "Supported by EU funding, ensuring financial stability.",
+            "Construction phase indicates immediate investment opportunities.",
+            "Potential for replication in other regions.",
             "Regulatory support for renewable energy projects.",
-            "Strong financial backing from a reputable developer.",
-            "Potential for community engagement and local support."
+            "Attractive for investors seeking diversified portfolios."
           ],
           "partners": [
-            "N/A"
+            "EU Funding Agencies",
+            "Local Contractors"
           ]
         },
         {
-          "name": "Kaišiadorys Solar Park",
-          "location": "Kaišiadorys",
-          "capacity": "40",
-          "developer": "To be determined",
+          "name": "Solar parks financing",
+          "location": "Poland",
+          "capacity": "67.8",
+          "developer": "JSC Atsinaujinančios Energetikos Investicijos",
           "investment": "N/A",
-          "timeline": "Planned",
-          "status": "Aiming to be the largest solar park for prosumers",
-          "source_url": "N/A",
-          "source_name": "N/A",
-          "category": "planning",
-          "date": "03/05/2025",
+          "timeline": "Financing Secured since 04/06/2023",
+          "status": "Financing Secured",
+          "source_url": "https://eimin.lrv.lt/en/structure-and-contacts/news-1/eimin-launching-the-loan-facility-for-all-stages-of-renewable-energy-power-plant-installation",
+          "source_name": "EIMIN News",
+          "category": "investment",
+          "date": "03/06/2025",
           "keyPoints": [
-            "Planned project targeting prosumers, enhancing local energy production.",
-            "Potential for community engagement and local support.",
-            "Regulatory support for prosumer-focused renewable energy projects.",
-            "Opportunity for innovative financing models.",
-            "Strong interest from local stakeholders.",
-            "Potential for technological advancements in solar energy."
+            "Secured financing indicates strong investor confidence.",
+            "Large capacity enhances potential energy output.",
+            "Strategic location for solar energy generation.",
+            "Partnerships with local governments for regulatory support.",
+            "Potential for job creation in the local economy.",
+            "Long-term energy contracts ensure revenue stability."
           ],
           "partners": [
-            "N/A"
+            "Local Government",
+            "Financial Institutions"
           ]
         },
         {
-          "name": "Overall solar capacity in Lithuania",
+          "name": "Renewable energy loans for legal entities",
           "location": "Lithuania",
-          "capacity": "{'total_capacity': 3029, 'wind_capacity': 1129, 'solar_capacity': 212}",
-          "developer": "N/A",
+          "capacity": "Variable (dependent on applications)",
+          "developer": "ILTE",
           "investment": "N/A",
-          "timeline": "Current as of August 2023",
-          "status": "Capacity of solar and wind power plants has rapidly increased, with plans for future growth.",
-          "source_url": "https://www.litgrid.eu/index.php/news-events-/news/litgrid-solar-and-wind-capacity-in-lithuania-has-reached-3-gw/32886",
-          "source_name": "Litgrid",
+          "timeline": "Active since loan facility launched",
+          "status": "Active",
+          "source_url": "https://ilte.lt/en/services/114/renewable-energy-loans-for-legal-entities-217",
+          "source_name": "ILTE Services",
           "category": "development",
-          "date": "03/05/2025",
+          "date": "03/06/2025",
           "keyPoints": [
-            "Total capacity of 3029 MW indicates strong growth in renewable energy.",
-            "Significant increase in both solar and wind capacities.",
-            "Regulatory support for renewable energy expansion.",
-            "Potential for future investments in renewable energy projects.",
-            "Strong market demand for renewable energy sources.",
-            "Financial incentives available for renewable energy investments."
+            "Provides financial support for various renewable energy projects.",
+            "Encourages local businesses to invest in solar energy.",
+            "Flexible capacity based on market demand.",
+            "Government-backed initiative enhances trust.",
+            "Promotes sustainable development in the region.",
+            "Potential for high returns on investment for lenders."
           ],
           "partners": [
-            "N/A"
+            "Lithuanian Government",
+            "Local Businesses"
           ]
         }
       ]

@@ -139,8 +139,8 @@ class EnergyProjectsCrew:
             output_dir.mkdir(exist_ok=True)
             
             # Use country-specific filenames in the output directory
-            search_output = output_dir / f'search_results_{self.country}.json'
-            analysis_output = output_dir / f'analysis_results_{self.country}.json'
+            search_output = f'output/search_results_{self.country}.json'
+            analysis_output = f'output/analysis_results_{self.country}.json'
             
             print(f"📂 Output directory: {output_dir}")
             print(f"📄 Search output path: {search_output}")
